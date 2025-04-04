@@ -27,6 +27,7 @@ int main() {
     {103,9500000,"Suburban, Green Spaces, Markets","Tax-inclusive pricing","Email verification"};
     {104,6000000,"Industrial Zone, Transport Hubs","Transparent breakdown","Mobile number verification"};
     {105,25000000,"Luxury Area, Golf Course, Clubs","Clear contract terms","Two-factor authentication"};
+    {106,8500000,"Riverside, Schools, Local Shops","Govt. certified rates","Password-protected login"};
 
 }
 
