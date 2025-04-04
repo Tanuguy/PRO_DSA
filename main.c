@@ -28,7 +28,7 @@ int main() {
     {104,6000000,"Industrial Zone, Transport Hubs","Transparent breakdown","Mobile number verification"};
     {105,25000000,"Luxury Area, Golf Course, Clubs","Clear contract terms","Two-factor authentication"};
     {106,8500000,"Riverside, Schools, Local Shops","Govt. certified rates","Password-protected login"};
-    {107,1,75,00,000,}
+    {107,17500000,}
 
 }
 
