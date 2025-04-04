@@ -1,0 +1,3 @@
+C:/Users/Tanis/CLionProjects/PRO_DSA/cmake-build-debug/CMakeFiles/PRO_DSA.dir
+C:/Users/Tanis/CLionProjects/PRO_DSA/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Tanis/CLionProjects/PRO_DSA/cmake-build-debug/CMakeFiles/rebuild_cache.dir
