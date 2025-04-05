@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #define area 30
 
 typedef struct {
@@ -16,13 +17,13 @@ typedef struct {
 //property = pro
 void displaypro(property details[],int count);
 //Search by nd
-void bynd(property details[],char nh[]);
+void bynd(property details[],int n,char nh[]);
 //Filter by price
 void byprice(property details[],int price);
 
 int main() {
     property details[area]={
-        {101,7500000,"Near City Center Schools Parks","Verified by Govt. Registry","OTP-based login"},
+        {101,7500000,"Park","Verified by Govt. Registry","OTP-based login"},
         {102,12000000,"Coastal Area, Hospitals, Malls","No hidden charges","Biometric login"},
         {103,9500000,"Suburban, Green Spaces, Markets","Tax-inclusive pricing","Email verification"},
         {104,6000000,"Industrial Zone, Transport Hubs","Transparent breakdown","Mobile number verification"},
@@ -44,10 +45,14 @@ int main() {
         {120,14000000,"Riverside, Schools, Local Shops","Govt. certified rates","Password-protected login"},
     };
 
-    int count = 20;
+    /*int count = 20;
     printf("Data Property\n");
     displaypro(details,count);
-    return 0;
+    return 0;*/
+
+    char nh[20];
+    printf("Enter the what is needed in your nh\n");
+    scanf("%s",nh);
 }
 
 void displaypro(property details[],int count) {
@@ -65,3 +70,21 @@ void displaypro(property details[],int count) {
         printf("%s\t\n",details[i].at);
     }
 }
+
+void bynd(property details[],int n,char nh[]) {
+    int found=0;
+    for(int i=0;i<n;i++) {
+        if (strcmp(details[i].at,nh)==0) {
+            printf("Found Neighborhood as you needed");
+            printf("%s\n",details[i].nh);
+            printf("Full Data of Property");
+            printf("%s\n");
+            found=1;
+            break;
+        }
+    }
+    if(!found) {
+        printf("Neighborhood not found");
+    }
+}
+
