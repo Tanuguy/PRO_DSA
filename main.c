@@ -50,9 +50,11 @@ int main() {
     displaypro(details,count);
     return 0;*/
 
-    char nh[20];
-    printf("Enter the what is needed in your nh\n");
+    int count = 20;
+    printf("Enter the you looking for:");
     scanf("%s",nh);
+    byprice(details,count,char nh);
+
 }
 
 void displaypro(property details[],int count) {
@@ -71,20 +73,21 @@ void displaypro(property details[],int count) {
     }
 }
 
-void bynd(property details[],int n,char nh[]) {
-    int found=0;
-    for(int i=0;i<n;i++) {
-        if (strcmp(details[i].at,nh)==0) {
-            printf("Found Neighborhood as you needed");
-            printf("%s\n",details[i].nh);
-            printf("Full Data of Property");
-            printf("%s\n");
-            found=1;
-            break;
+void bynd(property details[], int n, char nh[]) {
+    int found = 0;
+    printf("Searching for properties near: %s\n", nh);
+    for (int i = 0; i < n; i++) {
+        if (strstr(details[i].nh, nh) != NULL) {
+            printf("\nProperty ID: %d\n", details[i].proID);
+            printf("Price: %d\n", details[i].price);
+            printf("Neighborhood: %s\n", details[i].nh);
+            printf("Pricing Details: %s\n", details[i].tpd);
+            printf("Authentication Type: %s\n", details[i].at);
+            found = 1;
         }
     }
-    if(!found) {
-        printf("Neighborhood not found");
+    if (!found) {
+        printf("No properties found near: %s\n", nh);
     }
 }
 
