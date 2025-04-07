@@ -6,6 +6,7 @@
 typedef struct {
     //property ID = proid
     int proID;
+    //Price
     int price;
     //City in which it is
     char city[100];
