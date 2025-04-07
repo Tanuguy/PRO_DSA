@@ -67,7 +67,7 @@ int main() {
         printf("Enter you choice(1-5): ");
         scanf("%d",&choice);
 
-        //if Statement
+        //Switich Statement
         switch(choice) {
             case 1:
                 int count = area;
@@ -180,3 +180,4 @@ void byprice(property details[],int count,int mp){
     }
 }
 
+//......................
