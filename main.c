@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #define area 30
 
@@ -19,7 +20,7 @@ void displaypro(property details[],int count);
 //Search by neighborhood
 void bynd(property details[],int n,char nh[]);
 //Filter by price
-void byprice(property details[],int price);
+void byprice(property details[],int pd,int mp);
 
 int main() {
     // All Data
@@ -44,6 +45,8 @@ int main() {
         {118,6500000,"Industrial Zone, Transport Hubs","Transparent breakdown","Mobile number verification"},
         {119,27500000,"Luxury Area, Golf Course, Clubs","Clear contract terms","Two-factor authentication"},
         {120,14000000,"Riverside, Schools, Local Shops","Govt. certified rates","Password-protected login"},
+        {121,14,"Mall","Govt. certified rates","Password-protected login"},
+        {122,34,"Riverside","Govt. certified rates","Password-protected login"},
     };
 
     int choice;
@@ -54,26 +57,33 @@ int main() {
         printf("3. Search Property By Price\n");
         printf("4. Exit\n");
 
-        printf("Enter you choice(1-3): ");
+        printf("Enter you choice(1-4): ");
         scanf("%d",&choice);
 
         //if Statement
         switch(choice) {
             case 1:
-                int count = 20;
+                int count = area;
                 printf("Data Property\n");
                 displaypro(details,count);
                 break;
             case 2:
-                int y = 20;
+                int y = area;
                 char nh[100];
                 printf("Enter the neighborhood you are looking for:");
                 scanf("%s",nh);
                 bynd(details,y,nh);
                 break;
-            /*case 3:
-                byprice();
-                break;*/
+            case 3:
+                int mp;
+                printf("Enter the Max Price in which you looking for:");
+                scanf("%d",&mp);
+                byprice(details,area,mp);
+                break;
+            case 4:
+                printf("Exit\n");
+                exit(0);
+                break;
             default:
                 printf("Wrong choice\n");
                 break;
@@ -86,16 +96,12 @@ return 0;
 void displaypro(property details[],int count) {
     printf("Property Details\n\n\n");
     for(int i=0;i<count;i++) {
-        //printf("Property ID:");
         printf("ID: %d\n",details[i].proID);
-        //printf("Price:");
         printf("Price: %d\n",details[i].price);
-        //printf("Neighborhood:");
         printf("NH: %s\n",details[i].nh);
-        //printf("Pricing Detials:");
         printf("TPD: %s\n",details[i].tpd);
-        //printf("Authentication Type:");
-        printf("AT: %s\n\n\n\n",details[i].at);
+        printf("AT: %s\n",details[i].at);
+        printf("--------------------------------\n\n\n");
     }
 }
 
@@ -110,11 +116,31 @@ void bynd(property details[], int n, char nh[]) {
             printf("Neighborhood: %s\n", details[i].nh);
             printf("Pricing Details: %s\n", details[i].tpd);
             printf("Authentication Type: %s\n", details[i].at);
+            printf("------------------------------------\n\n\n");
             found = 1;
         }
     }
     if (!found) {
         printf("No properties found near: %s\n", nh);
+    }
+}
+
+void byprice(property details[],int pd,int mp){
+    int found = 0;
+    printf("Property under %d:\n",mp);
+    for (int i = 0; i < pd; i++) {
+        if (details[i].price < mp) {
+            printf("\nProperty ID: %d\n", details[i].proID);
+            printf("Price: %d\n", details[i].price);
+            printf("Neighborhood: %s\n", details[i].nh);
+            printf("Pricing Details: %s\n", details[i].tpd);
+            printf("Authentication Type: %s\n", details[i].at);
+            printf("----------------------------------\n\n\n");
+            found = 1;
+        }
+    }
+    if (!found) {
+        printf("No Properties found under %d:\n",mp);
     }
 }
 
