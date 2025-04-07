@@ -22,10 +22,11 @@ void bynd(property details[],int n,char nh[]);
 //Filter by price
 void byprice(property details[],int count,int mp);
 
+
 int main() {
     // All Data
     property details[area]={
-        {101,7500000,"Park","Verified by Govt. Registry","OTP-based login"},
+        {101,7500000,"Near City Center, Schools, Parks","Verified by Govt. Registry","OTP-based login"},
         {102,12000000,"Coastal Area, Hospitals, Malls","No hidden charges","Biometric login"},
         {103,9500000,"Suburban, Green Spaces, Markets","Tax-inclusive pricing","Email verification"},
         {104,6000000,"Industrial Zone, Transport Hubs","Transparent breakdown","Mobile number verification"},
@@ -45,8 +46,8 @@ int main() {
         {118,6500000,"Industrial Zone, Transport Hubs","Transparent breakdown","Mobile number verification"},
         {119,27500000,"Luxury Area, Golf Course, Clubs","Clear contract terms","Two-factor authentication"},
         {120,14000000,"Riverside, Schools, Local Shops","Govt. certified rates","Password-protected login"},
-        {121,14,"Mall","Govt. certified rates","Password-protected login"},
-        {122,34,"Riverside","Govt. certified rates","Password-protected login"},
+        {121,18000000,"Mall","Govt. certified rates","Password-protected login"},
+        {122,34000000,"Riverside","Govt. certified rates","Password-protected login"},
     };
 
     int choice;
@@ -81,7 +82,7 @@ int main() {
                 byprice(details,area,mp);
                 break;
             case 4:
-                printf("Exit\n");
+                printf("Exiting...\n");
                 exit(0);
                 break;
             default:
@@ -96,12 +97,12 @@ return 0;
 void displaypro(property details[],int count) {
     printf("Property Details\n\n\n");
     for(int i=0;i<count;i++) {
-        printf("ID: %d\n",details[i].proID);
-        printf("Price: %d\n",details[i].price);
-        printf("NH: %s\n",details[i].nh);
-        printf("TPD: %s\n",details[i].tpd);
-        printf("AT: %s\n",details[i].at);
-        printf("--------------------------------\n\n\n");
+        printf("\nProperty ID: %d\n", details[i].proID);
+        printf("Price: %d\n", details[i].price);
+        printf("Neighborhood: %s\n", details[i].nh);
+        printf("Pricing Details: %s\n", details[i].tpd);
+        printf("Authentication Type: %s\n", details[i].at);
+        printf("------------------------------------\n\n\n");
     }
 }
 
