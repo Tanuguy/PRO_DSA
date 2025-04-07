@@ -97,7 +97,7 @@ int main() {
                 byprice(details,area,mp);
                 break;
             case 5:
-                printf("Exiting...\nThank you\nYour Dream Home is waiting for you\n");
+                printf("Thank you\nYour Dream Home is waiting for you\n");
                 exit(0);
                 break;
             default:
