@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define area 30
+#define area 22
 
 typedef struct {
     //property ID = proid
@@ -20,7 +20,7 @@ void displaypro(property details[],int count);
 //Search by neighborhood
 void bynd(property details[],int n,char nh[]);
 //Filter by price
-void byprice(property details[],int pd,int mp);
+void byprice(property details[],int count,int mp);
 
 int main() {
     // All Data
@@ -125,10 +125,10 @@ void bynd(property details[], int n, char nh[]) {
     }
 }
 
-void byprice(property details[],int pd,int mp){
+void byprice(property details[],int count,int mp){
     int found = 0;
     printf("Property under %d:\n",mp);
-    for (int i = 0; i < pd; i++) {
+    for (int i = 0; i < count; i++) {
         if (details[i].price < mp) {
             printf("\nProperty ID: %d\n", details[i].proID);
             printf("Price: %d\n", details[i].price);
