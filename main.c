@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define area 22
+#define area 25
 
 typedef struct {
     //property ID = proid
@@ -53,6 +53,9 @@ int main() {
         {120,14000000,"Rishikesh","Riverside, Schools, Local Shops","Govt. certified rates","Password-protected login"},
         {121,18000000,"DehraDun","Mall, Forest","Govt. certified rates","Password-protected login"},
         {122,34000000,"Haridwar","Riverside","Govt. certified rates","Password-protected login"},
+        {123, 25000000, "Rishikesh","River, Retreat", "Private Limited Rates", "Two-Factor Authentication"},
+        {124, 20000000, "Mussoorie","Hill, Tourism", "Seasonal Offers", "Biometric Access"},
+        {125, 22000000, "Haridwar","Temple, Pilgrimage", "Govt. Subsidized Packages", "Encrypted Login System"}
     };
 
     int choice;
