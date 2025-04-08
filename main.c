@@ -26,6 +26,8 @@ void citypro(property details[],int count,char city[]);
 void bynd(property details[],int n,char nh[]);
 //Filter by price
 void byprice(property details[],int count,int mp);
+//Fiter by Price Scope
+void bytd(property details[],int count,char tpd[]);
 
 
 int main() {
@@ -49,7 +51,7 @@ int main() {
         {116,11000000,"Rishikesh","River Area, Hospitals, Malls","Verified by Govt. Registry","Biometric login"},
         {117,8000000,"Dehradun","Near City Center, Schools, Parks","Tax-inclusive pricing","Email verification"},
         {118,6500000,"Haridwar","Industrial Zone, Transport Hubs","Transparent breakdown","Mobile number verification"},
-        {119,27500000,"DehraDun","Luxury Area, Golf Course, Clubs","Clear contract terms","Two-factor authentication"},
+        {119,27500000,"Dehradun","Luxury Area, Golf Course, Clubs","Clear contract terms","Two-factor authentication"},
         {120,14000000,"Rishikesh","Riverside, Schools, Local Shops","Govt. certified rates","Password-protected login"},
         {121,18000000,"DehraDun","Mall, Forest","Govt. certified rates","Password-protected login"},
         {122,34000000,"Haridwar","Riverside","Govt. certified rates","Password-protected login"},
@@ -65,9 +67,10 @@ int main() {
         printf("2. Search Property By Neighborhood\n");
         printf("3. Search Property By City\n");
         printf("4. Search Property By Price\n");
-        printf("5. Exit\n");
+        printf("5. Search Property By Price Scope\n");
+        printf("6. Exit\n");
 
-        printf("Enter you choice(1-5): ");
+        printf("Enter you choice(1-6): ");
         scanf("%d",&choice);
 
         //Switich Statement
@@ -97,6 +100,12 @@ int main() {
                 byprice(details,area,mp);
                 break;
             case 5:
+                char tpd[100];
+                printf("Enter the Price Scope you are looking for:");
+                scanf("%s",tpd);
+                bytd(details,area,tpd);
+                break;
+            case 6:
                 printf("Thank you\nYour Dream Home is waiting for you\n");
                 exit(0);
                 break;
@@ -182,5 +191,26 @@ void byprice(property details[],int count,int mp){
         printf("No Properties found under %d:\n",mp);
     }
 }
+
+void bytd(property details[],int count,char tpd[]) {
+    int found = 0;
+    printf("Searching for properties near: %s\n", tpd);
+    for (int i = 0; i < count; i++) {
+        if (strstr(details[i].tpd, tpd) != NULL) {
+            printf("\nProperty ID: %d\n", details[i].proID);
+            printf("Price: %d\n", details[i].price);
+            printf("City: %s\n", details[i].city);
+            printf("Neighborhood: %s\n", details[i].nh);
+            printf("Pricing Details: %s\n", details[i].tpd);
+            printf("Authentication Type: %s\n", details[i].at);
+            printf("------------------------------------\n\n\n");
+            found = 1;
+        }
+    }
+    if (!found) {
+        printf("No properties found near: %s\n",tpd);
+    }
+}
+
 
 //......................
