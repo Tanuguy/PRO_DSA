@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define area 25
-#define money 20
+#define money 10
 
 typedef struct {
     //property ID = proid
@@ -144,7 +144,7 @@ int main() {
                   printf("Enter the neighborhood Price Range you are looking for:");
                   scanf("%s",nhp);
                   ndprice(pri,prn,nhp);
-            break;
+                  break;
             case 8:
                 printf("Thank you\nYour Dream Home is waiting for you\n");
                 exit(0);
@@ -269,6 +269,7 @@ void ndprice(capital pri[],int prn,char nhp[]){
             printf("Neighborhood: %s\n", pri[i].nhp);
             printf("Price Range Start: %d\n", pri[i].ps);
             printf("Price Range End: %d\n", pri[i].pe);
+            printf("---------------------------------------\n\n\n");
             found = 1;
         }
     }
