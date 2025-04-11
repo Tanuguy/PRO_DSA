@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define area 25
-#define money 10
+#define money 20
 
 typedef struct {
     //property ID = proid
@@ -24,7 +24,7 @@ typedef struct {
 int ps;
 //price range end
 int pe;
-char nh[100];
+char nhp[100];
 }capital;
 
 //property = pro
@@ -39,7 +39,8 @@ void byprice(property details[],int count,int mp);
 void bytd(property details[],int count,char tpd[]);
 //To display all Price ranges
 void displayprice(capital pri[],int pr);
-
+//Search the Price Range by Neighborhood
+void ndprice(capital pri[],int prn,char nhp[]);
 
 int main() {
     // All Data
@@ -94,9 +95,10 @@ int main() {
         printf("4. Search Property By Price\n");
         printf("5. Search Property By Price Scope\n");
         printf("6. Display all Properties by Price Range\n");
-        printf("7. Exit\n");
+        printf("7. Display all Price Range by Neighborhood\n");
+        printf("8. Exit\n");
 
-        printf("Enter you choice(1-6): ");
+        printf("Enter you choice(1-8): ");
         scanf("%d",&choice);
 
         //Switich Statement
@@ -137,6 +139,13 @@ int main() {
                 displayprice(pri,pr);
                 break;
             case 7:
+                  int prn = money;
+                  char nhp[100];
+                  printf("Enter the neighborhood Price Range you are looking for:");
+                  scanf("%s",nhp);
+                  ndprice(pri,prn,nhp);
+            break;
+            case 8:
                 printf("Thank you\nYour Dream Home is waiting for you\n");
                 exit(0);
                 break;
@@ -246,11 +255,30 @@ void bytd(property details[],int count,char tpd[]) {
 void displayprice(capital pri[],int pr){
 printf("Range Details\n");
 for(int i=0;i<pr;i++){
-    printf("Price Start: %d\n",pri[i].ps);
-    printf("Price End:  %d\n",pri[i].pe);
+    printf("Price Range Start: %d\n",pri[i].ps);
+    printf("Price Range End:  %d\n",pri[i].pe);
     printf("-------------------------------------\n\n\n");
 }
 }
+
+void ndprice(capital pri[],int prn,char nhp[]){
+    int found = 0;
+    printf("The Price Range of %s is:\n", nhp);
+    for (int i = 0; i < prn; i++) {
+        if (strstr(pri[i].nhp, nhp) != NULL) {
+            printf("Neighborhood: %s\n", pri[i].nhp);
+            printf("Price Range Start: %d\n", pri[i].ps);
+            printf("Price Range End: %d\n", pri[i].pe);
+            found = 1;
+        }
+    }
+    if (!found) {
+        printf("No neighborhood found near: %s\n", nhp);
+    }
+}
+
+
+
 
 
 //......................
