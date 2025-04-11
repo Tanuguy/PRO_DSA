@@ -24,6 +24,7 @@ typedef struct {
 int ps;
 //price range end
 int pe;
+char nh[100];
 }capital;
 
 //property = pro
@@ -72,14 +73,16 @@ int main() {
 
     // Data of area rate
     capital pri[money]={
-    {7500000,8000000},
-    {11000000,12000000},
-    {5500000,9500000},
-    {6000000,6500000},
-    {25000000,27500000},
-    {8500000,14000000},
-    {17500000,20000000},
-    {5000000,7000000},
+    {7500000,8000000,"Near city center, schools, parks"},
+    {11000000,12000000,"Coastal areas, hospitals, malls"},
+    {5500000,9500000,"Suburban green spaces, markets"},
+    {6000000,6500000,"Industrial zones, transport hubs"},
+    {25000000,27500000,"Luxury areas, golf courses, clubs"},
+    {8500000,14000000,"Riverside schools, local shops"},
+    {17500000,20000000,"Hill stations, resorts, trails"},
+    {5000000,7000000,"Rural farms, local markets"},
+    {20000000,40000000,"Premium areas, clubs, high-end shops"},
+    {15000000,20000000,"Beachfront, restaurants, hotels"},
     };
 
     int choice;
