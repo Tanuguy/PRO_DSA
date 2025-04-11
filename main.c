@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define area 25
+#define money 10
 
 typedef struct {
     //property ID = proid
@@ -18,6 +19,13 @@ typedef struct {
     char at[100];
 }property;
 
+typedef struct {
+// Price range start
+int ps;
+//price range end
+int pe;
+}capital;
+
 //property = pro
 void displaypro(property details[],int count);
 //Search by City
@@ -28,6 +36,8 @@ void bynd(property details[],int n,char nh[]);
 void byprice(property details[],int count,int mp);
 //Fiter by Price Scope
 void bytd(property details[],int count,char tpd[]);
+//To display all Price ranges
+void displayprice(capital pri[],int pr);
 
 
 int main() {
@@ -60,6 +70,18 @@ int main() {
         {125, 22000000, "Haridwar","Temple, Pilgrimage", "Govt. Subsidized Packages", "Encrypted Login System"}
     };
 
+    // Data of area rate
+    capital pri[money]={
+    {7500000,8000000},
+    {11000000,12000000},
+    {5500000,9500000},
+    {6000000,6500000},
+    {25000000,27500000},
+    {8500000,14000000},
+    {17500000,20000000},
+    {5000000,7000000},
+    };
+
     int choice;
 
         printf("What would you like to do?\n");
@@ -68,7 +90,8 @@ int main() {
         printf("3. Search Property By City\n");
         printf("4. Search Property By Price\n");
         printf("5. Search Property By Price Scope\n");
-        printf("6. Exit\n");
+        printf("6. Display all Properties by Price Range\n");
+        printf("7. Exit\n");
 
         printf("Enter you choice(1-6): ");
         scanf("%d",&choice);
@@ -106,6 +129,11 @@ int main() {
                 bytd(details,area,tpd);
                 break;
             case 6:
+                int pr = money;
+                printf("Price Range\n");
+                displayprice(pri,pr);
+                break;
+            case 7:
                 printf("Thank you\nYour Dream Home is waiting for you\n");
                 exit(0);
                 break;
@@ -210,6 +238,15 @@ void bytd(property details[],int count,char tpd[]) {
     if (!found) {
         printf("No properties found near: %s\n",tpd);
     }
+}
+
+void displayprice(capital pri[],int pr){
+printf("Range Details\n");
+for(int i=0;i<pr;i++){
+    printf("Price Start: %d\n",pri[i].ps);
+    printf("Price End:  %d\n",pri[i].pe);
+    printf("-------------------------------------\n\n\n");
+}
 }
 
 
