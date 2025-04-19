@@ -114,7 +114,7 @@ int main() {
             case 2:
                 int y = area;
                 char nh[100];
-                printf("Enter the neighborhood you are looking for:");
+                printf("Enter the neighborhood you are looking for in UK:");
                 scanf("%s",nh);
                 bynd(details,y,nh);
                 break;
