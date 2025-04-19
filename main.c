@@ -41,6 +41,8 @@ void bytd(property details[],int count,char tpd[]);
 void displayprice(capital pri[],int pr);
 //Search the Price Range by Neighborhood
 void ndprice(capital pri[],int prn,char nhp[]);
+//Search in City of Neighborhood
+void cynd(property details[],int n,char city[],char nh[]);
 
 int main() {
     // All Data
@@ -87,6 +89,7 @@ int main() {
     };
 
     int choice;
+    int subchoice;
 
         printf("What would you like to do?\n");
         printf("1. Display all Properties\n");
@@ -119,8 +122,25 @@ int main() {
                 char city[100];
                 printf("Enter the City you are looking for:");
                 scanf("%s",city);
-                citypro(details,area,city);
+
+                printf("1. Do you want to See all properties in %s\n",city);
+                printf("2. Do you want to see specific Properties in %s\n\n",city);
+
+                printf("Enter your Choice:");
+                scanf("%d",&subchoice);
+
+                switch (subchoice) {
+                    case 1:
+                        citypro(details,area,city);
+                        break;
+                    case 2:
+                        char nh[100];
+                        int n=area;
+                        cynd(details,n,city,nh);
+                        break;
+                }
                 break;
+
             case 4:
                 int mp;
                 printf("Enter the Max Price in which you looking for:");
@@ -278,7 +298,28 @@ void ndprice(capital pri[],int prn,char nhp[]){
     }
 }
 
+void cynd(property details[], int n, char city[], char nh[]) {
+    int found = 0;
+    printf("Searching for properties in %s near: %s\n", city, nh);
 
+    for (int i = 0; i < n; i++) {
+        // Check if the property matches the specified city and neighborhood
+        if (strcmp(details[i].city, city) == 0 && strstr(details[i].nh, nh) != NULL) {
+            printf("\nProperty ID: %d\n", details[i].proID);
+            printf("Price: %d\n", details[i].price);
+            printf("City: %s\n", details[i].city);
+            printf("Neighborhood: %s\n", details[i].nh);
+            printf("Pricing Details: %s\n", details[i].tpd);
+            printf("Authentication Type: %s\n", details[i].at);
+            printf("------------------------------------\n\n\n");
+            found = 1;
+        }
+    }
+
+    if (!found) {
+        printf("No properties found in %s near: %s\n", city, nh);
+    }
+}
 
 
 
