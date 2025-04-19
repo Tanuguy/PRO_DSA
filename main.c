@@ -67,7 +67,7 @@ int main() {
         {118,6500000,"Haridwar","Industrial Zone, Transport Hubs","Transparent breakdown","Mobile number verification"},
         {119,27500000,"Dehradun","Luxury Area, Golf Course, Clubs","Clear contract terms","Two-factor authentication"},
         {120,14000000,"Rishikesh","Riverside, Schools, Local Shops","Govt. certified rates","Password-protected login"},
-        {121,18000000,"DehraDun","Mall, Forest","Govt. certified rates","Password-protected login"},
+        {121,18000000,"Dehradun","Mall, Forest","Govt. certified rates","Password-protected login"},
         {122,34000000,"Haridwar","Riverside","Govt. certified rates","Password-protected login"},
         {123, 25000000, "Rishikesh","River, Retreat", "Private Limited Rates", "Two-Factor Authentication"},
         {124, 20000000, "Mussoorie","Hill, Tourism", "Seasonal Offers", "Biometric Access"},
@@ -135,12 +135,9 @@ int main() {
                         break;
                     case 2:
                         char nh[100];
-                        char city[100];
-                        int count = area;
                         printf("Enter want neighborhood you looking for in %s:",city);
                         scanf("%s",nh);
-
-                        cynd(details,count,city,nh);
+                        cynd(details,area,city,nh);
                         break;
                 }
                 break;
@@ -307,6 +304,7 @@ void cynd(property details[], int count, char city[], char nh[]) {
     printf("Searching for properties in %s near: %s\n", city, nh);
 
     for (int i = 0; i < count; i++) {
+        int found = 0;
         // Check if the property matches the specified city and neighborhood
         if (strcmp(details[i].city, city) == 0 && strstr(details[i].nh, nh) != NULL) {
             printf("\nProperty ID: %d\n", details[i].proID);
