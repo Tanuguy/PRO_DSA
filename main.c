@@ -136,10 +136,11 @@ int main() {
                     case 2:
                         char nh[100];
                         char city[100];
+                        int count = area;
                         printf("Enter want neighborhood you looking for in %s:",city);
                         scanf("%s",nh);
-                        int n=area;
-                        cynd(details,n,city,nh);
+
+                        cynd(details,count,city,nh);
                         break;
                 }
                 break;
@@ -215,10 +216,10 @@ void citypro(property details[],int count, char city[]) {
 }
 
 // Funtion to Search by neighborhood
-void bynd(property details[], int n, char nh[]) {
+void bynd(property details[], int count, char nh[]) {
     int found = 0;
     printf("Searching for properties near: %s\n", nh);
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < count; i++) {
         if (strstr(details[i].nh, nh) != NULL) {
             printf("\nProperty ID: %d\n", details[i].proID);
             printf("Price: %d\n", details[i].price);
@@ -301,11 +302,11 @@ void ndprice(capital pri[],int prn,char nhp[]){
     }
 }
 
-void cynd(property details[], int n, char city[], char nh[]) {
+void cynd(property details[], int count, char city[], char nh[]) {
     int found = 0;
     printf("Searching for properties in %s near: %s\n", city, nh);
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < count; i++) {
         // Check if the property matches the specified city and neighborhood
         if (strcmp(details[i].city, city) == 0 && strstr(details[i].nh, nh) != NULL) {
             printf("\nProperty ID: %d\n", details[i].proID);
