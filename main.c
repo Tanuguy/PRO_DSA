@@ -126,7 +126,7 @@ int main() {
                 printf("1. Do you want to See all properties in %s\n",city);
                 printf("2. Do you want to see specific Properties in %s\n\n",city);
 
-                printf("Enter your Choice:");
+                printf("Enter your Choice further:");
                 scanf("%d",&subchoice);
 
                 switch (subchoice) {
@@ -135,6 +135,8 @@ int main() {
                         break;
                     case 2:
                         char nh[100];
+                        printf("Enter want neighborhood you looking for in %s:",city);
+                        scanf("%s",nh);
                         int n=area;
                         cynd(details,n,city,nh);
                         break;
