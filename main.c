@@ -135,6 +135,7 @@ int main() {
                         break;
                     case 2:
                         char nh[100];
+                        char city[100];
                         printf("Enter want neighborhood you looking for in %s:",city);
                         scanf("%s",nh);
                         int n=area;
