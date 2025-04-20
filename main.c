@@ -3,6 +3,7 @@
 #include <string.h>
 #define area 25
 #define money 10
+#define build 25
 
 typedef struct {
     //property ID = proid
@@ -27,6 +28,27 @@ int pe;
 char nhp[100];
 }capital;
 
+typedef struct {
+    //Builder ID
+    int id;
+    //Builder name
+    char name[100];
+    //builder contact
+    int cn;
+    //builders specialization
+    char Spe[100];
+    //builder city
+    char city[100];
+    //builder email id
+    char eid[100];
+    //builder years of experience
+    int ye;
+    //builders completed projects
+    int cp;
+    //builder Website
+    char ws[100];
+}builders;
+
 //property = pro
 void displaypro(property details[],int count);
 //Search by City
@@ -43,6 +65,7 @@ void displayprice(capital pri[],int pr);
 void ndprice(capital pri[],int prn,char nhp[]);
 //Search in City of Neighborhood
 void cynd(property details[],int n,char city[],char nh[]);
+//Display all Builders Information
 
 int main() {
     // All Data
@@ -76,18 +99,25 @@ int main() {
 
     // Data of area rate
     capital pri[money]={
-    {7500000,8000000,"Near city center, schools, parks"},
-    {11000000,12000000,"Coastal areas, hospitals, malls"},
-    {5500000,9500000,"Suburban green spaces, markets"},
-    {6000000,6500000,"Industrial zones, transport hubs"},
-    {25000000,27500000,"Luxury areas, golf courses, clubs"},
-    {8500000,14000000,"Riverside schools, local shops"},
-    {17500000,20000000,"Hill stations, resorts, trails"},
-    {5000000,7000000,"Rural farms, local markets"},
-    {20000000,40000000,"Premium areas, clubs, high-end shops"},
-    {15000000,20000000,"Beachfront, restaurants, hotels"},
+        {7500000,8000000,"Near city center, schools, parks"},
+        {11000000,12000000,"Coastal areas, hospitals, malls"},
+        {5500000,9500000,"Suburban green spaces, markets"},
+        {6000000,6500000,"Industrial zones, transport hubs"},
+        {25000000,27500000,"Luxury areas, golf courses, clubs"},
+        {8500000,14000000,"Riverside schools, local shops"},
+        {17500000,20000000,"Hill stations, resorts, trails"},
+        {5000000,7000000,"Rural farms, local markets"},
+        {20000000,40000000,"Premium areas, clubs, high-end shops"},
+        {15000000,20000000,"Beachfront, restaurants, hotels"},
+        };
+
+    //Data of Builders
+    builders bui[build]={
+        {101,"Horizon Builders",9876543210,"Luxury apartments","Haridwar","horizon.builders@example.com",15,50,"www.horizonbuilders.com"},
+
     };
 
+    int upperchoice;
     int choice;
     int subchoice;
 
