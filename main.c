@@ -385,7 +385,7 @@ void cynd(property details[], int count, char city[], char nh[]) {
     }
 
     if (!found) {
-        printf("No properties found in %s near: %s\n", city, nh);
+        printf("No more properties found in %s near: %s\n", city, nh);
     }
 }
 
