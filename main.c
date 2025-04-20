@@ -3,7 +3,7 @@
 #include <string.h>
 #define area 25
 #define money 10
-#define build 25
+#define build 1
 
 typedef struct {
     //property ID = proid
@@ -66,6 +66,7 @@ void ndprice(capital pri[],int prn,char nhp[]);
 //Search in City of Neighborhood
 void cynd(property details[],int n,char city[],char nh[]);
 //Display all Builders Information
+void displaybuilders(builders bui[],int count);
 
 int main() {
     // All Data
@@ -121,92 +122,127 @@ int main() {
     int choice;
     int subchoice;
 
-        printf("What would you like to do?\n");
-        printf("1. Display all Properties\n");
-        printf("2. Search Property By Neighborhood\n");
-        printf("3. Search Property By City\n");
-        printf("4. Search Property By Price\n");
-        printf("5. Search Property By Price Scope\n");
-        printf("6. Display all Properties by Price Range\n");
-        printf("7. Display all Price Range by Neighborhood\n");
-        printf("8. Exit\n");
+    printf("1. Do you want to go in Builders Information\n");
+    printf("2. Do you want to go in Properties\n");
 
-        printf("Enter you choice(1-8): ");
-        scanf("%d",&choice);
+    printf("Enter your choice: ");
+    scanf("%d",&upperchoice);
 
-        //Switich Statement
-        switch(choice) {
-            case 1:
-                int count = area;
-                printf("Data Property\n");
-                displaypro(details,count);
-                break;
-            case 2:
-                int y = area;
-                char nh[100];
-                printf("Enter the neighborhood you are looking for in UK:");
-                scanf("%s",nh);
-                bynd(details,y,nh);
-                break;
-            case 3:
-                char city[100];
-                printf("Enter the City you are looking for:");
-                scanf("%s",city);
+    switch(upperchoice) {
+        case 1:
+            int count = build;
+            printf("Builders Information\n\n");
+            displaybuilders(bui,count);
+            break;
+        case 2:
 
-                printf("1. Do you want to See all properties in %s\n",city);
-                printf("2. Do you want to see specific Properties in %s\n\n",city);
 
-                printf("Enter your Choice further:");
-                scanf("%d",&subchoice);
+            printf("What would you like to do?\n");
+            printf("1. Display all Properties\n");
+            printf("2. Search Property By Neighborhood\n");
+            printf("3. Search Property By City\n");
+            printf("4. Search Property By Price\n");
+            printf("5. Search Property By Price Scope\n");
+            printf("6. Display all Properties by Price Range\n");
+            printf("7. Display all Price Range by Neighborhood\n");
+            printf("8. Exit\n");
 
-                switch (subchoice) {
-                    case 1:
-                        citypro(details,area,city);
-                        break;
-                    case 2:
-                        char nh[100];
-                        printf("Enter want neighborhood you looking for in %s:",city);
-                        scanf("%s",nh);
-                        cynd(details,area,city,nh);
-                        break;
-                }
-                break;
+            printf("Enter you choice(1-8): ");
+            scanf("%d",&choice);
 
-            case 4:
-                int mp;
-                printf("Enter the Max Price in which you looking for:");
-                scanf("%d",&mp);
-                byprice(details,area,mp);
-                break;
-            case 5:
-                char tpd[100];
-                printf("Enter the Price Scope you are looking for:");
-                scanf("%s",tpd);
-                bytd(details,area,tpd);
-                break;
-            case 6:
-                int pr = money;
-                printf("Price Range\n");
-                displayprice(pri,pr);
-                break;
-            case 7:
-                  int prn = money;
-                  char nhp[100];
-                  printf("Enter the neighborhood Price Range you are looking for:");
-                  scanf("%s",nhp);
-                  ndprice(pri,prn,nhp);
-                  break;
-            case 8:
-                printf("Thank you\nYour Dream Home is waiting for you\n");
-                exit(0);
-                break;
-            default:
-                printf("Wrong choice\n");
-                break;
-        }
+            //Switich Statement
+            switch(choice) {
+                case 1:
+                    int count = area;
+                    printf("Data Property\n");
+                    displaypro(details,count);
+                    break;
+                case 2:
+                    int y = area;
+                    char nh[100];
+                    printf("Enter the neighborhood you are looking for in UK:");
+                    scanf("%s",nh);
+                    bynd(details,y,nh);
+                    break;
+                case 3:
+                    char city[100];
+                    printf("Enter the City you are looking for:");
+                    scanf("%s",city);
+
+                    printf("1. Do you want to See all properties in %s\n",city);
+                    printf("2. Do you want to see specific Properties in %s\n\n",city);
+
+                    printf("Enter your Choice further:");
+                    scanf("%d",&subchoice);
+
+                    switch (subchoice) {
+                        case 1:
+                            citypro(details,area,city);
+                            break;
+                        case 2:
+                            char nh[100];
+                            printf("Enter want neighborhood you looking for in %s:",city);
+                            scanf("%s",nh);
+                            cynd(details,area,city,nh);
+                            break;
+                    }
+                    break;
+
+                case 4:
+                    int mp;
+                    printf("Enter the Max Price in which you looking for:");
+                    scanf("%d",&mp);
+                    byprice(details,area,mp);
+                    break;
+                case 5:
+                    char tpd[100];
+                    printf("Enter the Price Scope you are looking for:");
+                    scanf("%s",tpd);
+                    bytd(details,area,tpd);
+                    break;
+                case 6:
+                    int pr = money;
+                    printf("Price Range\n");
+                    displayprice(pri,pr);
+                    break;
+                case 7:
+                    int prn = money;
+                    char nhp[100];
+                    printf("Enter the neighborhood Price Range you are looking for:");
+                    scanf("%s",nhp);
+                    ndprice(pri,prn,nhp);
+                    break;
+                case 8:
+                    printf("Thank you\nYour Dream Home is waiting for you\n");
+                    exit(0);
+                    break;
+                default:
+                    printf("Wrong choice\n");
+                    break;
+
+                    break;
+            }
+    }
 
 return 0;
 }
+
+void displaybuilders(builders bui[],int count) {
+    printf("Builders Details\n\n");
+    for(int i=0;i<count;i++) {
+        printf("ID:%d\n",bui[i].id);
+        printf("Name: %s\n",bui[i].name);
+        printf("contact: %d\n",bui[i].cn);
+        printf("Specialization: %s\n",bui[i].Spe);
+        printf("City: %s\n",bui[i].city);
+        printf("Email id: %s\n",bui[i].eid);
+        printf("Years Of Experience: %d\n",bui[i].ye);
+        printf("Completed Projects: %d\n",bui[i].cp);
+        printf("Website: %s\n",bui[i].ws);
+        printf("----------------------------\n\n\n");
+    }
+}
+
 
 //Funtion to display all properties
 void displaypro(property details[],int count) {
