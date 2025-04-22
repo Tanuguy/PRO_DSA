@@ -3,7 +3,7 @@
 #include <string.h>
 #define area 25
 #define money 10
-#define build 1
+#define build 25
 
 typedef struct {
     //property ID = proid
@@ -114,8 +114,10 @@ int main() {
 
     //Data of Builders
     builders bui[build]={
-        {101,"Horizon Builders",9876543210,"Luxury apartments","Haridwar","horizon.builders@example.com",15,50,"www.horizonbuilders.com"},
-
+        {101,"Horizon Builders",9876543210,"Luxury apartments","Haridwar","horizon.builders@gmail.com",15,50,"www.horizonbuilders.com"},
+        {102,"Skyline ventures","8765432198","Commercial Spaces","Dehradun","skyline.ventures@microsoft.com",10,35,"www.skyline.com"},
+        {103,"Green Screen Creations",9988776655,"Eco-Friendly","Roorkee","pinnacle.developers@gmail.com",8,25,"www.greenscapecreateions.com"},
+        {104,"Pinnacle Developer",7788994400,"High rise Buildings","Baghewar","pinnacle.developers@reddifmail.com",12,40,"www.pineappledevelopers.com"}
     };
 
     int upperchoice;
