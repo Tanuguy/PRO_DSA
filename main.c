@@ -145,8 +145,10 @@ int main() {
     int choice;
     int subchoice;
 
+    printf("--------------------------------------------------\n");
     printf("1. Do you want to go in Builders Information\n");
     printf("2. Do you want to go in Properties\n");
+    printf("---------------------------------------------------\n\n");
 
     printf("Enter your choice: ");
     scanf("%d",&upperchoice);
@@ -161,6 +163,7 @@ int main() {
 
 
             printf("What would you like to do?\n");
+            printf("---------------------------------------\n");
             printf("1. Display all Properties\n");
             printf("2. Search Property By Neighborhood\n");
             printf("3. Search Property By City\n");
@@ -169,6 +172,7 @@ int main() {
             printf("6. Display all Properties by Price Range\n");
             printf("7. Display all Price Range by Neighborhood\n");
             printf("8. Exit\n");
+            printf("-------------------------------------------\n\n");
 
             printf("Enter you choice(1-8): ");
             scanf("%d",&choice);
