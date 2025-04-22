@@ -117,7 +117,14 @@ int main() {
         {101,"Horizon Builders",9876543210,"Luxury apartments","Haridwar","horizon.builders@gmail.com",15,50,"www.horizonbuilders.com"},
         {102,"Skyline ventures","8765432198","Commercial Spaces","Dehradun","skyline.ventures@microsoft.com",10,35,"www.skyline.com"},
         {103,"Green Screen Creations",9988776655,"Eco-Friendly","Roorkee","pinnacle.developers@gmail.com",8,25,"www.greenscapecreateions.com"},
-        {104,"Pinnacle Developer",7788994400,"High rise Buildings","Baghewar","pinnacle.developers@reddifmail.com",12,40,"www.pineappledevelopers.com"}
+        {104,"Pinnacle Developer",7788994400,"High rise Buildings","Baghewar","pinnacle.developers@reddifmail.com",12,40,"www.pineappledevelopers.com"},
+        {105,"DreamLand Constructions",7788994400,"Budget Friendly homes","Rishikesh","dreamland.constructions@gmail.com",11,45,"www.urbanvistabuilders.com"},
+        {106,"UrbanVista Builders",6677889900,"Mixed-Use Developments","Haridwar","urbanvista.builders@gmail.com",11,45,"www.urbanvistabuilders.com"},
+        {107,"Elite Contractors",2233445566,"Villas and Bungalows","Mussoorie","elite.contractors@gmail.com",13,50,"www.elitecontractors"},
+        {108,"Apex Architects",3344556699,"IT Parks","Dehradun","apex.archietects@gmail.com",9,28,"www.apexarchitects.com"},
+        {109,"Summit Constructors",3344556655,"Retail Properties","Rishikesh","summit.constructions@gmail.com",13,40,"www.sumitconstruction.com"},
+        {110,"Paradise Homes",2233445566,"Retiement Homes","Haridwar","paradise.homes@gmail.com",6,20,"www.paradisehomes.com"},
+        {111},
     };
 
     int upperchoice;
