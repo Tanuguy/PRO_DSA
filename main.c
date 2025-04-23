@@ -259,10 +259,10 @@ void displaybuilders(builders bui[],int count) {
     for(int i=0;i<count;i++) {
         printf("ID:%d\n",bui[i].id);
         printf("Name: %s\n",bui[i].name);
-        printf("contact: %s\n",bui[i].cn);
+        printf("Contact no.: %s\n",bui[i].cn);
         printf("Specialization: %s\n",bui[i].Spe);
         printf("City: %s\n",bui[i].city);
-        printf("Email id: %s\n",bui[i].eid);
+        printf("Email Id: %s\n",bui[i].eid);
         printf("Years Of Experience: %d\n",bui[i].ye);
         printf("Completed Projects: %d\n",bui[i].cp);
         printf("Website: %s\n",bui[i].ws);
