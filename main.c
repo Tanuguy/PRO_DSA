@@ -34,7 +34,7 @@ typedef struct {
     //Builder name
     char name[100];
     //builder contact
-    int cn;
+    char cn[100];
     //builders specialization
     char Spe[100];
     //builder city
@@ -114,31 +114,31 @@ int main() {
 
     //Data of Builders
     builders bui[build]={
-        {101,"Horizon Builders",9876543210,"Luxury apartments","Haridwar","horizon.builders@gmail.com",15,50,"www.horizonbuilders.com"},
+        {101,"Horizon Builders","9876543210","Luxury apartments","Haridwar","horizon.builders@gmail.com",15,50,"www.horizonbuilders.com"},
         {102,"Skyline ventures","8765432198","Commercial Spaces","Dehradun","skyline.ventures@microsoft.com",10,35,"www.skyline.com"},
-        {103,"Green Screen Creations",9988776655,"Eco-Friendly","Roorkee","pinnacle.developers@gmail.com",8,25,"www.greenscapecreateions.com"},
-        {104,"Pinnacle Developer",7788994400,"High rise Buildings","Baghewar","pinnacle.developers@reddifmail.com",12,40,"www.pineappledevelopers.com"},
-        {105,"DreamLand Constructions",7788994400,"Budget Friendly homes","Rishikesh","dreamland.constructions@gmail.com",11,45,"www.urbanvistabuilders.com"},
-        {106,"UrbanVista Builders",6677889900,"Mixed-Use Developments","Haridwar","urbanvista.builders@gmail.com",11,45,"www.urbanvistabuilders.com"},
-        {107,"Elite Contractors",2233445566,"Villas and Bungalows","Mussoorie","elite.contractors@gmail.com",13,50,"www.elitecontractors"},
-        {108,"Apex Architects",3344556699,"IT Parks","Dehradun","apex.archietects@gmail.com",9,28,"www.apexarchitects.com"},
-        {109,"Summit Constructors",3344556655,"Retail Properties","Rishikesh","summit.constructions@gmail.com",13,40,"www.sumitconstruction.com"},
-        {110,"Paradise Homes",2233445566,"Retiement Homes","Haridwar","paradise.homes@gmail.com",6,20,"www.paradisehomes.com"},
-        {111,"Vertex Builders",2233445566,"Affordable Housing","Roorkee","vertex.builders@gmail.com",10,32,"www.vertexbuilders.com"},
-        {112,"Nova Infrastucture",7788668866,"Greenfield Projects","Mussoorie","nova.infastructue",9,26,"www.novainfrastructues.com"},
-        {113,"Emerald Estates",8899664433,"Gated Communties","Dehradun","emararld.estates@gmail.com",8,24,"www.emeralesatetes.com"},
-        {114,"Zenith Constructions",9099887766,"Industrial Estates","Haridwar","zenith.constructions@gmail.com",12,38,"www.zenithconstructions.com"},
-        {115,"Cosmo Builders",8080665555,"Smart Cites","Dehradun","cosmo.builders@gmailcom",14,45,"www.cosmobuilders.com"},
-        {116,"Heritage Builders",7077555444,"Heritage Restorations","Haridwar","heritage.builders@gmail.com",7,22,"www.heritagebuilders.com"},
-        {117,"Visionary Homes",6066644333,"Sustainable Houses","Rishikesh","visionary.homes@gmail.com",7,22,"www.visonaryhomes.com"},
-        {118,"BluePeak Builders",5055333222,"Tourist Resorts","Haridwar","bluepeak.builders@gmail.com",11,37,"www.bluepeakbuilders.com"},
-        {119,"Starlight Projects",404422332,"Residental Towers","Dehradun","starlight.projects@gmail.com",6,19,"www.starlightprojects.com"},
-        {120,"Pioneer Consturcutions",303332134,"Hotels","Rishikesh","pioneer.constructions@gmail.com",15,49,"www.pioneerconstructions.com"},
-        {121,"Coral Builders",1911323113,"Riverside Properties","Haridwar","coralbuilders@gmail.com",14,40,"www.coralbuilers.com"},
-        {122,"Vasturai Estates",202211133,"Relegions Places","Haridwar","vasturi.esatates@gmail.com",10,33,"www.vasturiestates"},
-        {123,"Dynamic Builders",181232123,"Commercial pLaces","Dehradun","dynamic.builders@gmail.com",8,23,"www.dynamicbuilders.com"},
-        {124,"Rising Builders",171111123,"Luxury Clubs","Mussoorie","rising.ventures@gail.com",13,35,"www.risingventures.com"},
-        {125,"Harmony Builders",1611100112,"Family Homes","Pauri Garwal","harmony.builders@gmail.com",10,30,"www.harmonybuilders.com"}
+        {103,"Green Screen Creations","2988776655","Eco-Friendly","Roorkee","pinnacle.developers@gmail.com",8,25,"www.greenscapecreateions.com"},
+        {104,"Pinnacle Developer","7788994400","High rise Buildings","Baghewar","pinnacle.developers@reddifmail.com",12,40,"www.pineappledevelopers.com"},
+        {105,"DreamLand Constructions","7788994400","Budget Friendly homes","Rishikesh","dreamland.constructions@gmail.com",11,45,"www.urbanvistabuilders.com"},
+        {106,"UrbanVista Builders","6677889900","Mixed-Use Developments","Haridwar","urbanvista.builders@gmail.com",11,45,"www.urbanvistabuilders.com"},
+        {107,"Elite Contractors","2233445566","Villas and Bungalows","Mussoorie","elite.contractors@gmail.com",13,50,"www.elitecontractors"},
+        {108,"Apex Architects","3344556699","IT Parks","Dehradun","apex.archietects@gmail.com",9,28,"www.apexarchitects.com"},
+        {109,"Summit Constructors","3344556655","Retail Properties","Rishikesh","summit.constructions@gmail.com",13,40,"www.sumitconstruction.com"},
+        {110,"Paradise Homes","2233445566","Retiement Homes","Haridwar","paradise.homes@gmail.com",6,20,"www.paradisehomes.com"},
+        {111,"Vertex Builders","2233445566","Affordable Housing","Roorkee","vertex.builders@gmail.com",10,32,"www.vertexbuilders.com"},
+        {112,"Nova Infrastucture","7788668866","Greenfield Projects","Mussoorie","nova.infastructue",9,26,"www.novainfrastructues.com"},
+        {113,"Emerald Estates","8899664433","Gated Communties","Dehradun","emararld.estates@gmail.com",8,24,"www.emeralesatetes.com"},
+        {114,"Zenith Constructions","9099887766","Industrial Estates","Haridwar","zenith.constructions@gmail.com",12,38,"www.zenithconstructions.com"},
+        {115,"Cosmo Builders","8080665555","Smart Cites","Dehradun","cosmo.builders@gmailcom",14,45,"www.cosmobuilders.com"},
+        {116,"Heritage Builders","7077555444","Heritage Restorations","Haridwar","heritage.builders@gmail.com",7,22,"www.heritagebuilders.com"},
+        {117,"Visionary Homes","6066644333","Sustainable Houses","Rishikesh","visionary.homes@gmail.com",7,22,"www.visonaryhomes.com"},
+        {118,"BluePeak Builders","5055333222","Tourist Resorts","Haridwar","bluepeak.builders@gmail.com",11,37,"www.bluepeakbuilders.com"},
+        {119,"Starlight Projects","4044223321","Residental Towers","Dehradun","starlight.projects@gmail.com",6,19,"www.starlightprojects.com"},
+        {120,"Pioneer Consturcutions","303332134","Hotels","Rishikesh","pioneer.constructions@gmail.com",15,49,"www.pioneerconstructions.com"},
+        {121,"Coral Builders","1911323113","Riverside Properties","Haridwar","coralbuilders@gmail.com",14,40,"www.coralbuilers.com"},
+        {122,"Vasturai Estates","202211133","Relegions Places","Haridwar","vasturi.esatates@gmail.com",10,33,"www.vasturiestates"},
+        {123,"Dynamic Builders","181232123","Commercial pLaces","Dehradun","dynamic.builders@gmail.com",8,23,"www.dynamicbuilders.com"},
+        {124,"Rising Builders","1711111231","Luxury Clubs","Mussoorie","rising.ventures@gail.com",13,35,"www.risingventures.com"},
+        {125,"Harmony Builders","1611100112","Family Homes","Pauri Garwal","harmony.builders@gmail.com",10,30,"www.harmonybuilders.com"}
     };
 
     int upperchoice;
@@ -259,7 +259,7 @@ void displaybuilders(builders bui[],int count) {
     for(int i=0;i<count;i++) {
         printf("ID:%d\n",bui[i].id);
         printf("Name: %s\n",bui[i].name);
-        printf("contact: %d\n",bui[i].cn);
+        printf("contact: %s\n",bui[i].cn);
         printf("Specialization: %s\n",bui[i].Spe);
         printf("City: %s\n",bui[i].city);
         printf("Email id: %s\n",bui[i].eid);
