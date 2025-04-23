@@ -143,10 +143,11 @@ int main() {
 
     int upperchoice;
     int choice;
+    int buichoice;
     int subchoice;
 
     printf("--------------------------------------------------\n");
-    printf("1. Do you want to go in Builders Information\n");
+    printf("1. Do you want to go in Builders\n");
     printf("2. Do you want to go in Properties\n");
     printf("---------------------------------------------------\n\n");
 
@@ -155,10 +156,25 @@ int main() {
 
     switch(upperchoice) {
         case 1:
-            int count = build;
-            printf("Builders Information\n\n");
-            displaybuilders(bui,count);
-            break;
+            printf("-----------------------------------------\n");
+            printf("1. Do you want to See all Builder Details\n");
+            printf("2. Do You want .......\n");
+            printf("-------------------------------------------\n\n");
+
+
+            printf("Enter your Choice:");
+            scanf("%d",&buichoice);
+
+            switch (buichoice) {
+                case 1:
+                    int count = build;
+                    printf("Builders Information\n\n");
+                    displaybuilders(bui,count);
+                    break;
+                case 2:
+                    break;
+            }break;
+
         case 2:
 
 
