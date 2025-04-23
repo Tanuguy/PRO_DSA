@@ -159,6 +159,7 @@ int main() {
             printf("-----------------------------------------\n");
             printf("1. Do you want to See all Builder Details\n");
             printf("2. Do You want .......\n");
+            printf("3. Exit\n");
             printf("-------------------------------------------\n\n");
 
 
@@ -172,6 +173,10 @@ int main() {
                     displaybuilders(bui,count);
                     break;
                 case 2:
+                    break;
+                    case 3:
+                    printf("Thank you\n");
+                    exit(0);
                     break;
             }break;
 
@@ -213,7 +218,8 @@ int main() {
                     scanf("%s",city);
 
                     printf("1. Do you want to See all properties in %s\n",city);
-                    printf("2. Do you want to see specific Properties in %s\n\n",city);
+                    printf("2. Do you want to see specific Properties in %s\n",city);
+                    printf("3. Exit\n");
 
                     printf("Enter your Choice further:");
                     scanf("%d",&subchoice);
@@ -227,6 +233,10 @@ int main() {
                             printf("Enter want neighborhood you looking for in %s:",city);
                             scanf("%s",nh);
                             cynd(details,area,city,nh);
+                            break;
+                            case 3:
+                            printf("Thank you \n");
+                            exit(0);
                             break;
                     }
                     break;
