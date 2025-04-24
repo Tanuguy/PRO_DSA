@@ -35,7 +35,7 @@ typedef struct {
     char name[100];
     //builder contact
     char cn[100];
-    //builders specialization
+    //builder specialization
     char Spe[100];
     //builder city
     char city[100];
