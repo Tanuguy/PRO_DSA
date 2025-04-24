@@ -141,10 +141,10 @@ int main() {
         {125,"Harmony Builders","1611100112","Family Homes","Pauri Garwal","harmony.builders@gmail.com",10,30,"www.harmonybuilders.com"}
     };
 
-    int upperchoice;
-    int choice;
-    int buichoice;
-    int subchoice;
+    int upperchoice; //whole Switch
+    int choice;  //for Property switch
+    int buichoice; //for builder Choice
+    int subchoice; // in City area
 
     printf("--------------------------------------------------\n");
     printf("1. Do you want to go in Builders\n");
