@@ -174,7 +174,7 @@ int main() {
                     break;
                 case 2:
                     break;
-                    case 3:
+                case 3:
                     printf("Thank you\n");
                     exit(0);
                     break;
@@ -234,7 +234,7 @@ int main() {
                             scanf("%s",nh);
                             cynd(details,area,city,nh);
                             break;
-                            case 3:
+                        case 3:
                             printf("Thank you \n");
                             exit(0);
                             break;
