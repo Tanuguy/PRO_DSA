@@ -18,6 +18,7 @@ typedef struct {
     char tpd[100];
     //AuthenticationType = at
     char at[100];
+    //property Ava
 }property;
 
 typedef struct {
