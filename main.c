@@ -1,25 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define area 25
 #define money 10
-#define build 25
 
-typedef struct {
-    //property ID = proid
-    int proID;
-    //Price
-    int price;
-    //City in which it is
-    char city[100];
-    // neighborhood = nh
-    char nh[100];
-    //pricing detail = tpd
-    char tpd[100];
-    //AuthenticationType = at
-    char at[100];
-    //property Ava
-}property;
+
+
+struct Property {
+    char proID[100];     // Property ID
+    int price;          // Price of the property
+    char city[100];      // City name
+    char nh[100]; // Neighborhood
+    char tpd[100]; // Total properties in the area
+    char at[100]; // Average temperature data
+};
+
 
 typedef struct {
 // Price range start
@@ -51,54 +45,56 @@ typedef struct {
 }builders;
 
 //property = pro
-void displaypro(property details[],int count);
+void displayPro(struct Property details[],int count);
 //Search by City
-void citypro(property details[],int count,char city[]);
+/*void citypro(struct property details[],int count,char city[]);
 //Search by neighborhood
-void bynd(property details[],int n,char nh[]);
+void bynd(struct property details[],int n,char nh[]);
 //Filter by price
-void byprice(property details[],int count,int mp);
+void byprice(struct property details[],int count,int mp);
 //Fiter by Price Scope
-void bytd(property details[],int count,char tpd[]);
+void bytd(struct property details[],int count,char tpd[]);
 //To display all Price ranges
 void displayprice(capital pri[],int pr);
 //Search the Price Range by Neighborhood
 void ndprice(capital pri[],int prn,char nhp[]);
 //Search in City of Neighborhood
-void cynd(property details[],int n,char city[],char nh[]);
+void cynd(struct property details[],int n,char city[],char nh[]);
 //Display all Builders Information
-void displaybuilders(builders bui[],int count);
+void displaybuilders(builders bui[],int count);*/
 
 int main() {
-    // All Data
-    property details[area]={
-        {101,7500000,"Dehradun","Near City Center, Schools, Parks","Verified by Govt. Registry","OTP-based login"},
-        {102,12000000,"Rishikesh","Riverside, Hospitals, Malls","No hidden charges","Biometric login"},
-        {103,9500000,"Almora","Suburban, Green Spaces, Markets","Tax-inclusive pricing","Email verification"},
-        {104,6000000,"Haridwar","Industrial Zone, Transport Hubs","Transparent breakdown","Mobile number verification"},
-        {105,25000000,"Mussoorie","Luxury Area, Golf Course, Clubs","Clear contract terms","Two-factor authentication"},
-        {106,8500000,"Haridwar","Riverside, Schools, Local Shops","Govt. certified rates","Password-protected login"},
-        {107,17500000,"Mussoorie","Hill Station, Resorts, Trails","No hidden fees","Face recognition"},
-        {108,5000000,"Pauri Garhwal","Rural, Farms, Local Markets","Transparent pricing","OTP-based login"},
-        {109,10000000,"Dehradun","Urban, IT Parks, Shopping Centers","Verified by Govt. Registry","Biometric login"},
-        {110,15000000,"Haridwar","Riverside, Restaurants, Hotels","Tax-inclusive pricing","Email verification"},
-        {111,7000000,"Mussoorie","Near Forest, Schools, Hospitals","Transparent breakdown","Mobile number verification"},
-        {112,20000000,"Dehradun","Premium Area, Clubs, High-end Shops","Clear contract terms","Two-factor authentication"},
-        {113,9000000,"Mussoorie","Near Forest, Trails, Resorts","Govt. certified rates","Password-protected login"},
-        {114,12500000,"Haridwar","Near River, Parks, Schools","No hidden fees","Face recognition"},
-        {115,5500000,"Bageshwar","Suburban, Green Spaces, Markets","Transparent pricing","OTP-based login"},
-        {116,11000000,"Rishikesh","River Area, Hospitals, Malls","Verified by Govt. Registry","Biometric login"},
-        {117,8000000,"Dehradun","Near City Center, Schools, Parks","Tax-inclusive pricing","Email verification"},
-        {118,6500000,"Haridwar","Industrial Zone, Transport Hubs","Transparent breakdown","Mobile number verification"},
-        {119,27500000,"Dehradun","Luxury Area, Golf Course, Clubs","Clear contract terms","Two-factor authentication"},
-        {120,14000000,"Rishikesh","Riverside, Schools, Local Shops","Govt. certified rates","Password-protected login"},
-        {121,18000000,"Dehradun","Mall, Forest","Govt. certified rates","Password-protected login"},
-        {122,34000000,"Haridwar","Riverside","Govt. certified rates","Password-protected login"},
-        {123, 25000000, "Rishikesh","River, Retreat", "Private Limited Rates", "Two-Factor Authentication"},
-        {124, 20000000, "Mussoorie","Hill, Tourism", "Seasonal Offers", "Biometric Access"},
-        {125, 22000000, "Haridwar","Temple, Pilgrimage", "Govt. Subsidized Packages", "Encrypted Login System"}
-    };
+    struct Property details[10]; // Array to store up to 10 properties
+    int n = 0; // Index for the details array
 
+    // Open the CSV file for reading
+    FILE *file = fopen("C:/DSA Pro/PRList.csv", "r");
+    if (file == NULL) {
+        printf("Error opening file for reading!\n");
+        return 1;
+    }
+
+    char buffer[200];
+    fgets(buffer, 200, file); // Skip the header line
+
+    // Read and parse data from the CSV file
+    while (fgets(buffer, 200, file) != NULL && n < 10) {
+        sscanf(buffer, "%[^,],%d,%[^,],%[^,],%d,%f",
+              details[n].proID,
+              &details[n].price,
+              details[n].city,
+              details[n].nh,
+              &details[n].tpd,
+              &details[n].at);
+        n++;
+    }
+    fclose(file);
+    displayPro(details, n);
+
+    return 0;
+
+    }
+/*
     // Data of area rate
     capital pri[money]={
         {7500000,8000000,"Near city center, schools, parks"},
@@ -279,8 +275,8 @@ int main() {
     }
 
 return 0;
-}
-
+}*/
+/*
 void displaybuilders(builders bui[],int count) {
     printf("Builders Details\n\n");
     for(int i=0;i<count;i++) {
@@ -295,25 +291,26 @@ void displaybuilders(builders bui[],int count) {
         printf("Website: %s\n",bui[i].ws);
         printf("----------------------------\n\n\n");
     }
-}
+}*/
 
 
 //Funtion to display all properties
-void displaypro(property details[],int count) {
-    printf("Property Details\n\n\n");
-    for(int i=0;i<count;i++) {
-        printf("\nProperty ID: %d\n", details[i].proID);
+void displayPro(struct Property details[], int count) {
+    printf("Property Details:\n");
+    for (int i = 0; i < count; i++) {
+        printf("Property ID: %s\n", details[i].proID);
         printf("Price: %d\n", details[i].price);
         printf("City: %s\n", details[i].city);
         printf("Neighborhood: %s\n", details[i].nh);
-        printf("Pricing Details: %s\n", details[i].tpd);
-        printf("Authentication Type: %s\n", details[i].at);
-        printf("------------------------------------\n\n\n");
+        printf("Total Properties: %s\n", details[i].tpd);
+        printf("Average Temperature: %s\n", details[i].at);
+        printf("---------------------------\n");
     }
 }
 
+/*
 //Funtion to Search By City
-void citypro(property details[],int count, char city[]) {
+void citypro(struct property details[],int count, char city[]) {
     int found = 0;
     for(int i=0;i<count;i++) {
         if(strstr(details[i].city,city)!=NULL){
@@ -333,7 +330,7 @@ void citypro(property details[],int count, char city[]) {
 }
 
 // Funtion to Search by neighborhood
-void bynd(property details[], int count, char nh[]) {
+void bynd(struct property details[], int count, char nh[]) {
     int found = 0;
     printf("Searching for properties near: %s\n", nh);
     for (int i = 0; i < count; i++) {
@@ -353,7 +350,7 @@ void bynd(property details[], int count, char nh[]) {
     }
 }
 
-void byprice(property details[],int count,int mp){
+void byprice(struct property details[],int count,int mp){
     int found = 0;
     printf("Property under %d:\n",mp);
     for (int i = 0; i < count; i++) {
@@ -373,7 +370,7 @@ void byprice(property details[],int count,int mp){
     }
 }
 
-void bytd(property details[],int count,char tpd[]) {
+void bytd(struct property details[],int count,char tpd[]) {
     int found = 0;
     printf("Searching for properties near: %s\n", tpd);
     for (int i = 0; i < count; i++) {
@@ -419,7 +416,7 @@ void ndprice(capital pri[],int prn,char nhp[]){
     }
 }
 
-void cynd(property details[], int count, char city[], char nh[]) {
+void cynd(struct property details[], int count, char city[], char nh[]) {
     int found = 0;
     printf("Searching for properties in %s near: %s\n", city, nh);
 
@@ -443,6 +440,6 @@ void cynd(property details[], int count, char city[], char nh[]) {
     }
 }
 
-
+*/
 
 //......................
