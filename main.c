@@ -91,7 +91,7 @@ int main() {
     }
 
     fclose(file);
-    //displayPro(details,count);
+    displayPro(details,count);
     char city[100];
     printf("Enter the City you are looking for:");
     scanf("%s",city);
