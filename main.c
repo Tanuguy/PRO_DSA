@@ -5,23 +5,23 @@
 
 
 
-struct Property {
+struct property {
     char proID[100];     // Property ID
-    int price;          // Price of the property
+    char price[100];          // Price of the property
     char city[100];      // City name
     char nh[100]; // Neighborhood
     char tpd[100]; // Total properties in the area
     char at[100]; // Average temperature data
 };
 
-
-typedef struct {
+/*
+struct capital{
 // Price range start
 int ps;
 //price range end
 int pe;
 char nhp[100];
-}capital;
+};
 
 typedef struct {
     //Builder ID
@@ -42,14 +42,14 @@ typedef struct {
     int cp;
     //builder Website
     char ws[100];
-}builders;
+}builders;*/
 
 //property = pro
-void displayPro(struct Property details[],int count);
+void displayPro(struct property details[],int count);
 //Search by City
-/*void citypro(struct property details[],int count,char city[]);
+void citypro(struct property details[],int count,char city[]);
 //Search by neighborhood
-void bynd(struct property details[],int n,char nh[]);
+/*void bynd(struct property details[],int n,char nh[]);
 //Filter by price
 void byprice(struct property details[],int count,int mp);
 //Fiter by Price Scope
@@ -62,10 +62,11 @@ void ndprice(capital pri[],int prn,char nhp[]);
 void cynd(struct property details[],int n,char city[],char nh[]);
 //Display all Builders Information
 void displaybuilders(builders bui[],int count);*/
+struct property details[25];
 
 int main() {
-    struct Property details[10]; // Array to store up to 10 properties
-    int n = 0; // Index for the details array
+    struct property details[25];
+    int count = 0; // Index for the details array
 
     // Open the CSV file for reading
     FILE *file = fopen("C:/DSA Pro/PRList.csv", "r");
@@ -74,22 +75,27 @@ int main() {
         return 1;
     }
 
-    char buffer[200];
-    fgets(buffer, 200, file); // Skip the header line
+    char buffer[100];
+    fgets(buffer, 100, file); // Skip the header line
 
     // Read and parse data from the CSV file
-    while (fgets(buffer, 200, file) != NULL && n < 10) {
-        sscanf(buffer, "%[^,],%d,%[^,],%[^,],%d,%f",
-              details[n].proID,
-              &details[n].price,
-              details[n].city,
-              details[n].nh,
-              &details[n].tpd,
-              &details[n].at);
-        n++;
+    while (fgets(buffer, 200, file) != NULL && count < 25) {
+        sscanf(buffer, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,]",
+              details[count].proID,
+              details[count].price,
+              details[count].city,
+              details[count].nh,
+              details[count].tpd,
+              details[count].at);
+        count++;
     }
+
     fclose(file);
-    displayPro(details, n);
+    //displayPro(details,count);
+    char city[100];
+    printf("Enter the City you are looking for:");
+    scanf("%s",city);
+    citypro(details,count,city);
 
     return 0;
 
@@ -295,32 +301,32 @@ void displaybuilders(builders bui[],int count) {
 
 
 //Funtion to display all properties
-void displayPro(struct Property details[], int count) {
+void displayPro(struct property details[], int count) {
     printf("Property Details:\n");
     for (int i = 0; i < count; i++) {
         printf("Property ID: %s\n", details[i].proID);
-        printf("Price: %d\n", details[i].price);
+        printf("Price: %s\n", details[i].price);
         printf("City: %s\n", details[i].city);
         printf("Neighborhood: %s\n", details[i].nh);
         printf("Total Properties: %s\n", details[i].tpd);
-        printf("Average Temperature: %s\n", details[i].at);
+        printf("AT: %s\n", details[i].at);
         printf("---------------------------\n");
     }
 }
 
-/*
+
 //Funtion to Search By City
 void citypro(struct property details[],int count, char city[]) {
     int found = 0;
     for(int i=0;i<count;i++) {
         if(strstr(details[i].city,city)!=NULL){
-            printf("Property ID: %d\n", details[i].proID);
-            printf("Price: %d\n", details[i].price);
+            printf("Property ID: %s\n", details[i].proID);
+            printf("Price: %s\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
-            printf("Pricing Details: %s\n", details[i].tpd);
-            printf("Authentication Type: %s\n", details[i].at);
-            printf("-------------------------------------\n\n\n");
+            printf("Total Properties: %s\n", details[i].tpd);
+            printf("AT: %s\n", details[i].at);
+            printf("---------------------------\n");
             found = 1;
         }
     }
@@ -328,7 +334,7 @@ void citypro(struct property details[],int count, char city[]) {
         printf("City not there\n");
     }
 }
-
+/*
 // Funtion to Search by neighborhood
 void bynd(struct property details[], int count, char nh[]) {
     int found = 0;
