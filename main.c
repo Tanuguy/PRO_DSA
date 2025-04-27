@@ -106,8 +106,8 @@ int main() {
     // Read capital data
     while (fgets(buffer, 200, fr) != NULL && cap < 25) {
         sscanf(buffer, "%[^,],%[^,\n]",
-               pri[cap].nhp,
-               pri[cap].pr);
+               pri[cap].pr,
+               pri[cap].nhp);
 
         cap++;
     }
@@ -390,6 +390,7 @@ void displayprice(struct capital pri[],int ps){
 printf("Range Details:\n");
 for(int i=0;i<ps;i++){
     printf("Price Range: %s\n",pri[i].pr);
+    printf("Neighborhood: %s\n",pri[i].nhp);
     printf("-------------------------------------\n\n\n");
 }
 }
