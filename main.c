@@ -60,86 +60,82 @@ void ndprice(struct capital pri[],int prn,char nhp[]);
 void cynd(struct property details[],int n,char city[],char nh[]);
 //Display all Builders Information
 void displaybuilders(struct builders bui[],int count);
-
-//Declaring Struct Variables
-struct property details[25];
-struct capital pri[25];
-struct builders bui[25];
+    struct property details[25];
+    struct capital pri[25];
+    struct builders bui[25];
 
 int main() {
-    //Total Properties Data
-    struct property details[25];
-    int count = 0; // Index for the details array
 
-    // Open the CSV file for reading
+
+    int propertyCount = 0;
+    int capitalCount = 0;
+    int buildersCount = 0;
+
+    // Open the property file
     FILE *file = fopen("C:/DSA Pro/PRList.csv", "r");
     if (file == NULL) {
-        printf("Error opening file for reading!\n");
+        printf("Error opening properties file for reading!\n");
         return 1;
     }
 
-    char buffer[100];
-    fgets(buffer, 100, file); // Skip the header line
+    char buffer[200];
+    fgets(buffer, 200, file); // Skip the header line
 
-    // Read and parse data from the CSV file
-    while (fgets(buffer, 200, file) != NULL && count < 25) {
-        sscanf(buffer, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,]",
-              details[count].proID,
-              details[count].price,
-              details[count].city,
-              details[count].nh,
-              details[count].tpd,
-              details[count].at);
-        count++;
+    // Read properties data
+    while (fgets(buffer, 200, file) != NULL && propertyCount < 25) {
+        sscanf(buffer, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,\n]",
+               details[propertyCount].proID,
+               details[propertyCount].price,
+               details[propertyCount].city,
+               details[propertyCount].nh,
+               details[propertyCount].tpd,
+               details[propertyCount].at);
+        propertyCount++;
     }
-
     fclose(file);
 
-    // Data of area rate
-    struct capital pri[count];
-
+    // Open the capital file
     FILE *fr = fopen("C:/DSA Pro/PRrange.csv", "r");
     if (fr == NULL) {
-        printf("Error opening file for reading!\n");
+        printf("Error opening capital file for reading!\n");
         return 1;
     }
-    char buffer1[100];
-    fgets(buffer1, 100, fr);
+    fgets(buffer, 200, fr); // Skip the header line
 
-    while (fgets(buffer1, 200, fr) != NULL && count < 25) {
-        sscanf(buffer1,"%[^,],%[^,]",
-            pri[count].pr,
-            pri[count].pr);
-        count++;
+    // Read capital data
+    while (fgets(buffer, 200, fr) != NULL && capitalCount < 25) {
+        sscanf(buffer, "%[^,],%[^,\n]",
+               pri[capitalCount].nhp,
+               pri[capitalCount].pr);
+
+        capitalCount++;
     }
     fclose(fr);
 
-    //Data of Builders
-
-    struct builders bui[count];
-
-    FILE *fb = fopen("C:/DSA Pro/PRrange.csv", "r");
+    // Open the builder file
+    FILE *fb = fopen("C:/DSA Pro/PRbuild.csv", "r");
     if (fb == NULL) {
-        printf("Error opening file for reading!\n");
+        printf("Error opening builders file for reading!\n");
         return 1;
     }
-    char buffer2[100];
-    fgets(buffer2, 100, fb);
+    fgets(buffer, 200, fb); // Skip the header line
 
-    while (fgets(buffer2, 200, fb) != NULL && count < 25) {
-        sscanf(buffer2,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,]",
-            bui[count].id,
-            bui[count].name,
-            bui[count].cn,
-            bui[count].Spe,
-            bui[count].city,
-            bui[count].eid,
-            bui[count].ye,
-            bui[count].cp,
-            bui[count].ws);
-        count++;
+    // Read builders data
+    while (fgets(buffer, 200, fb) != NULL && buildersCount < 25) {
+        sscanf(buffer, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,\n]",
+               bui[buildersCount].id,
+               bui[buildersCount].name,
+               bui[buildersCount].cn,
+               bui[buildersCount].Spe,
+               bui[buildersCount].city,
+               bui[buildersCount].eid,
+               bui[buildersCount].ye,
+               bui[buildersCount].cp,
+               bui[buildersCount].ws);
+        buildersCount++;
     }
     fclose(fb);
+
 
 
     int upperchoice; //whole Switch
@@ -169,9 +165,8 @@ int main() {
 
             switch (buichoice) {
                 case 1:
-                    int count = bui;
                     printf("Builders Information\n\n");
-                    displaybuilders(bui,count);
+                    displaybuilders(bui,buildersCount);
                     break;
                 case 2:
                     break;
@@ -227,13 +222,13 @@ int main() {
 
                     switch (subchoice) {
                         case 1:
-                            citypro(details,count,city);
+                            citypro(details,details,city);
                             break;
                         case 2:
                             char nh[100];
                             printf("Enter want neighborhood you looking for in %s:",city);
                             scanf("%s",nh);
-                            cynd(details,count,city,nh);
+                            cynd(details,propertyCount,city,nh);
                             break;
                         case 3:
                             printf("Thank you \n");
@@ -246,17 +241,17 @@ int main() {
                     int mp;
                     printf("Enter the Max Price in which you looking for:");
                     scanf("%d",&mp);
-                    byprice(details,count,mp);
+                    byprice(details,propertyCount,mp);
                     break;
                 case 5:
                     char tpd[100];
                     printf("Enter the Price Scope you are looking for:");
                     scanf("%s",tpd);
-                    bytd(details,count,tpd);
+                    bytd(details,propertyCount,tpd);
                     break;
                 case 6:
                     int pr = pri;
-                    printf("Price Range\n");
+                    printf("Price Range: \n");
                     displayprice(pri,pr);
                     break;
                 case 7:
@@ -397,7 +392,7 @@ void bytd(struct property details[],int count,char tpd[]) {
 void displayprice(struct capital pri[],int pr){
 printf("Range Details\n");
 for(int i=0;i<pr;i++){
-    printf("Price Range Start: %s\n",pri[i].pr);
+    printf("Price Range: %s\n",pri[i].pr);
     printf("-------------------------------------\n\n\n");
 }
 }
@@ -408,7 +403,7 @@ void ndprice(struct capital pri[],int prn,char nhp[]){
     for (int i = 0; i < prn; i++) {
         if (strstr(pri[i].nhp, nhp) != NULL) {
             printf("Neighborhood: %s\n", pri[i].nhp);
-            printf("Price Range Start: %s\n", pri[i].pr);
+            printf("Price Range : %s\n", pri[i].pr);
             printf("---------------------------------------\n\n\n");
             found = 1;
         }
@@ -427,7 +422,7 @@ void cynd(struct property details[], int count, char city[], char nh[]) {
         // Check if the property matches the specified city and neighborhood
         if (strcmp(details[i].city, city) == 0 && strstr(details[i].nh, nh) != NULL) {
             printf("\nProperty ID: %s\n", details[i].proID);
-            printf("Price: %d\n", details[i].price);
+            printf("Price: %s\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
             printf("Pricing Details: %s\n", details[i].tpd);
