@@ -1,10 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define money 10
 
-
-
+//Property Structure
 struct property {
     char proID[100];     // Property ID
     char price[100];          // Price of the property
@@ -14,18 +12,18 @@ struct property {
     char at[100]; // Average temperature data
 };
 
-/*
+//Price Range Structure
 struct capital{
-// Price range start
-int ps;
-//price range end
-int pe;
+// Price range
+char pr[100];
+// neighborhood
 char nhp[100];
 };
 
-typedef struct {
+//Builders information structure
+struct builders{
     //Builder ID
-    int id;
+    char id[100];
     //Builder name
     char name[100];
     //builder contact
@@ -37,34 +35,39 @@ typedef struct {
     //builder email id
     char eid[100];
     //builder years of experience
-    int ye;
+    char ye[100];
     //builders completed projects
-    int cp;
+    char cp[100];
     //builder Website
     char ws[100];
-}builders;*/
+};
 
 //property = pro
-void displayPro(struct property details[],int count);
+void displaypro(struct property details[],int count);
 //Search by City
 void citypro(struct property details[],int count,char city[]);
 //Search by neighborhood
-/*void bynd(struct property details[],int n,char nh[]);
+void bynd(struct property details[],int n,char nh[]);
 //Filter by price
 void byprice(struct property details[],int count,int mp);
 //Fiter by Price Scope
 void bytd(struct property details[],int count,char tpd[]);
 //To display all Price ranges
-void displayprice(capital pri[],int pr);
+void displayprice(struct capital pri[],int pr);
 //Search the Price Range by Neighborhood
-void ndprice(capital pri[],int prn,char nhp[]);
+void ndprice(struct capital pri[],int prn,char nhp[]);
 //Search in City of Neighborhood
 void cynd(struct property details[],int n,char city[],char nh[]);
 //Display all Builders Information
-void displaybuilders(builders bui[],int count);*/
+void displaybuilders(struct builders bui[],int count);
+
+//Declaring Struct Variables
 struct property details[25];
+struct capital pri[25];
+struct builders bui[25];
 
 int main() {
+    //Total Properties Data
     struct property details[25];
     int count = 0; // Index for the details array
 
@@ -91,58 +94,53 @@ int main() {
     }
 
     fclose(file);
-    displayPro(details,count);
-    char city[100];
-    printf("Enter the City you are looking for:");
-    scanf("%s",city);
-    citypro(details,count,city);
 
-    return 0;
-
-    }
-/*
     // Data of area rate
-    capital pri[money]={
-        {7500000,8000000,"Near city center, schools, parks"},
-        {11000000,12000000,"Coastal areas, hospitals, malls"},
-        {5500000,9500000,"Suburban green spaces, markets"},
-        {6000000,6500000,"Industrial zones, transport hubs"},
-        {25000000,27500000,"Luxury areas, golf courses, clubs"},
-        {8500000,14000000,"Riverside schools, local shops"},
-        {17500000,20000000,"Hill stations, resorts, trails"},
-        {5000000,7000000,"Rural farms, local markets"},
-        {20000000,40000000,"Premium areas, clubs, high-end shops"},
-        {15000000,20000000,"Beachfront, restaurants, hotels"},
-        };
+    struct capital pri[count];
+
+    FILE *fr = fopen("C:/DSA Pro/PRrange.csv", "r");
+    if (fr == NULL) {
+        printf("Error opening file for reading!\n");
+        return 1;
+    }
+    char buffer1[100];
+    fgets(buffer1, 100, fr);
+
+    while (fgets(buffer1, 200, fr) != NULL && count < 25) {
+        sscanf(buffer1,"%[^,],%[^,]",
+            pri[count].pr,
+            pri[count].pr);
+        count++;
+    }
+    fclose(fr);
 
     //Data of Builders
-    builders bui[build]={
-        {101,"Horizon Builders","9876543210","Luxury apartments","Haridwar","horizon.builders@gmail.com",15,50,"www.horizonbuilders.com"},
-        {102,"Skyline ventures","8765432198","Commercial Spaces","Dehradun","skyline.ventures@microsoft.com",10,35,"www.skyline.com"},
-        {103,"Green Screen Creations","2988776655","Eco-Friendly","Roorkee","pinnacle.developers@gmail.com",8,25,"www.greenscapecreateions.com"},
-        {104,"Pinnacle Developer","7788994400","High rise Buildings","Baghewar","pinnacle.developers@reddifmail.com",12,40,"www.pineappledevelopers.com"},
-        {105,"DreamLand Constructions","7788994400","Budget Friendly homes","Rishikesh","dreamland.constructions@gmail.com",11,45,"www.urbanvistabuilders.com"},
-        {106,"UrbanVista Builders","6677889900","Mixed-Use Developments","Haridwar","urbanvista.builders@gmail.com",11,45,"www.urbanvistabuilders.com"},
-        {107,"Elite Contractors","2233445566","Villas and Bungalows","Mussoorie","elite.contractors@gmail.com",13,50,"www.elitecontractors"},
-        {108,"Apex Architects","3344556699","IT Parks","Dehradun","apex.archietects@gmail.com",9,28,"www.apexarchitects.com"},
-        {109,"Summit Constructors","3344556655","Retail Properties","Rishikesh","summit.constructions@gmail.com",13,40,"www.sumitconstruction.com"},
-        {110,"Paradise Homes","2233445566","Retiement Homes","Haridwar","paradise.homes@gmail.com",6,20,"www.paradisehomes.com"},
-        {111,"Vertex Builders","2233445566","Affordable Housing","Roorkee","vertex.builders@gmail.com",10,32,"www.vertexbuilders.com"},
-        {112,"Nova Infrastucture","7788668866","Greenfield Projects","Mussoorie","nova.infastructue",9,26,"www.novainfrastructues.com"},
-        {113,"Emerald Estates","8899664433","Gated Communties","Dehradun","emararld.estates@gmail.com",8,24,"www.emeralesatetes.com"},
-        {114,"Zenith Constructions","9099887766","Industrial Estates","Haridwar","zenith.constructions@gmail.com",12,38,"www.zenithconstructions.com"},
-        {115,"Cosmo Builders","8080665555","Smart Cites","Dehradun","cosmo.builders@gmailcom",14,45,"www.cosmobuilders.com"},
-        {116,"Heritage Builders","7077555444","Heritage Restorations","Haridwar","heritage.builders@gmail.com",7,22,"www.heritagebuilders.com"},
-        {117,"Visionary Homes","6066644333","Sustainable Houses","Rishikesh","visionary.homes@gmail.com",7,22,"www.visonaryhomes.com"},
-        {118,"BluePeak Builders","5055333222","Tourist Resorts","Haridwar","bluepeak.builders@gmail.com",11,37,"www.bluepeakbuilders.com"},
-        {119,"Starlight Projects","4044223321","Residental Towers","Dehradun","starlight.projects@gmail.com",6,19,"www.starlightprojects.com"},
-        {120,"Pioneer Consturcutions","303332134","Hotels","Rishikesh","pioneer.constructions@gmail.com",15,49,"www.pioneerconstructions.com"},
-        {121,"Coral Builders","1911323113","Riverside Properties","Haridwar","coralbuilders@gmail.com",14,40,"www.coralbuilers.com"},
-        {122,"Vasturai Estates","202211133","Relegions Places","Haridwar","vasturi.esatates@gmail.com",10,33,"www.vasturiestates"},
-        {123,"Dynamic Builders","181232123","Commercial pLaces","Dehradun","dynamic.builders@gmail.com",8,23,"www.dynamicbuilders.com"},
-        {124,"Rising Builders","1711111231","Luxury Clubs","Mussoorie","rising.ventures@gail.com",13,35,"www.risingventures.com"},
-        {125,"Harmony Builders","1611100112","Family Homes","Pauri Garwal","harmony.builders@gmail.com",10,30,"www.harmonybuilders.com"}
-    };
+
+    struct builders bui[count];
+
+    FILE *fb = fopen("C:/DSA Pro/PRrange.csv", "r");
+    if (fb == NULL) {
+        printf("Error opening file for reading!\n");
+        return 1;
+    }
+    char buffer2[100];
+    fgets(buffer2, 100, fb);
+
+    while (fgets(buffer2, 200, fb) != NULL && count < 25) {
+        sscanf(buffer2,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,]",
+            bui[count].id,
+            bui[count].name,
+            bui[count].cn,
+            bui[count].Spe,
+            bui[count].city,
+            bui[count].eid,
+            bui[count].ye,
+            bui[count].cp,
+            bui[count].ws);
+        count++;
+    }
+    fclose(fb);
+
 
     int upperchoice; //whole Switch
     int choice;  //for Property switch
@@ -171,7 +169,7 @@ int main() {
 
             switch (buichoice) {
                 case 1:
-                    int count = build;
+                    int count = bui;
                     printf("Builders Information\n\n");
                     displaybuilders(bui,count);
                     break;
@@ -204,12 +202,12 @@ int main() {
             //Switich Statement
             switch(choice) {
                 case 1:
-                    int count = area;
+                    int count = details;
                     printf("Data Property\n");
                     displaypro(details,count);
                     break;
                 case 2:
-                    int y = area;
+                    int y = details;
                     char nh[100];
                     printf("Enter the neighborhood you are looking for in UK:");
                     scanf("%s",nh);
@@ -229,13 +227,13 @@ int main() {
 
                     switch (subchoice) {
                         case 1:
-                            citypro(details,area,city);
+                            citypro(details,count,city);
                             break;
                         case 2:
                             char nh[100];
                             printf("Enter want neighborhood you looking for in %s:",city);
                             scanf("%s",nh);
-                            cynd(details,area,city,nh);
+                            cynd(details,count,city,nh);
                             break;
                         case 3:
                             printf("Thank you \n");
@@ -248,21 +246,21 @@ int main() {
                     int mp;
                     printf("Enter the Max Price in which you looking for:");
                     scanf("%d",&mp);
-                    byprice(details,area,mp);
+                    byprice(details,count,mp);
                     break;
                 case 5:
                     char tpd[100];
                     printf("Enter the Price Scope you are looking for:");
                     scanf("%s",tpd);
-                    bytd(details,area,tpd);
+                    bytd(details,count,tpd);
                     break;
                 case 6:
-                    int pr = money;
+                    int pr = pri;
                     printf("Price Range\n");
                     displayprice(pri,pr);
                     break;
                 case 7:
-                    int prn = money;
+                    int prn = pri;
                     char nhp[100];
                     printf("Enter the neighborhood Price Range you are looking for:");
                     scanf("%s",nhp);
@@ -281,27 +279,27 @@ int main() {
     }
 
 return 0;
-}*/
-/*
-void displaybuilders(builders bui[],int count) {
+};
+
+void displaybuilders(struct builders bui[],int count) {
     printf("Builders Details\n\n");
     for(int i=0;i<count;i++) {
-        printf("ID:%d\n",bui[i].id);
+        printf("ID:%s\n",bui[i].id);
         printf("Name: %s\n",bui[i].name);
         printf("Contact no.: %s\n",bui[i].cn);
         printf("Specialization: %s\n",bui[i].Spe);
         printf("City: %s\n",bui[i].city);
         printf("Email Id: %s\n",bui[i].eid);
-        printf("Years Of Experience: %d\n",bui[i].ye);
-        printf("Completed Projects: %d\n",bui[i].cp);
+        printf("Years Of Experience: %s\n",bui[i].ye);
+        printf("Completed Projects: %s\n",bui[i].cp);
         printf("Website: %s\n",bui[i].ws);
         printf("----------------------------\n\n\n");
     }
-}*/
+}
 
 
 //Funtion to display all properties
-void displayPro(struct property details[], int count) {
+void displaypro(struct property details[], int count) {
     printf("Property Details:\n");
     for (int i = 0; i < count; i++) {
         printf("Property ID: %s\n", details[i].proID);
@@ -334,15 +332,15 @@ void citypro(struct property details[],int count, char city[]) {
         printf("City not there\n");
     }
 }
-/*
+
 // Funtion to Search by neighborhood
 void bynd(struct property details[], int count, char nh[]) {
     int found = 0;
     printf("Searching for properties near: %s\n", nh);
     for (int i = 0; i < count; i++) {
         if (strstr(details[i].nh, nh) != NULL) {
-            printf("\nProperty ID: %d\n", details[i].proID);
-            printf("Price: %d\n", details[i].price);
+            printf("\nProperty ID: %s\n", details[i].proID);
+            printf("Price: %s\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
             printf("Pricing Details: %s\n", details[i].tpd);
@@ -360,9 +358,9 @@ void byprice(struct property details[],int count,int mp){
     int found = 0;
     printf("Property under %d:\n",mp);
     for (int i = 0; i < count; i++) {
-        if (details[i].price < mp) {
-            printf("\nProperty ID: %d\n", details[i].proID);
-            printf("Price: %d\n", details[i].price);
+        if (details[i].price) {
+            printf("\nProperty ID: %s\n", details[i].proID);
+            printf("Price: %s\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
             printf("Pricing Details: %s\n", details[i].tpd);
@@ -381,8 +379,8 @@ void bytd(struct property details[],int count,char tpd[]) {
     printf("Searching for properties near: %s\n", tpd);
     for (int i = 0; i < count; i++) {
         if (strstr(details[i].tpd, tpd) != NULL) {
-            printf("\nProperty ID: %d\n", details[i].proID);
-            printf("Price: %d\n", details[i].price);
+            printf("\nProperty ID: %s\n", details[i].proID);
+            printf("Price: %s\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
             printf("Pricing Details: %s\n", details[i].tpd);
@@ -396,23 +394,21 @@ void bytd(struct property details[],int count,char tpd[]) {
     }
 }
 
-void displayprice(capital pri[],int pr){
+void displayprice(struct capital pri[],int pr){
 printf("Range Details\n");
 for(int i=0;i<pr;i++){
-    printf("Price Range Start: %d\n",pri[i].ps);
-    printf("Price Range End:  %d\n",pri[i].pe);
+    printf("Price Range Start: %s\n",pri[i].pr);
     printf("-------------------------------------\n\n\n");
 }
 }
 
-void ndprice(capital pri[],int prn,char nhp[]){
+void ndprice(struct capital pri[],int prn,char nhp[]){
     int found = 0;
     printf("The Price Range of %s is:\n", nhp);
     for (int i = 0; i < prn; i++) {
         if (strstr(pri[i].nhp, nhp) != NULL) {
             printf("Neighborhood: %s\n", pri[i].nhp);
-            printf("Price Range Start: %d\n", pri[i].ps);
-            printf("Price Range End: %d\n", pri[i].pe);
+            printf("Price Range Start: %s\n", pri[i].pr);
             printf("---------------------------------------\n\n\n");
             found = 1;
         }
@@ -430,7 +426,7 @@ void cynd(struct property details[], int count, char city[], char nh[]) {
         int found = 0;
         // Check if the property matches the specified city and neighborhood
         if (strcmp(details[i].city, city) == 0 && strstr(details[i].nh, nh) != NULL) {
-            printf("\nProperty ID: %d\n", details[i].proID);
+            printf("\nProperty ID: %s\n", details[i].proID);
             printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
@@ -445,7 +441,5 @@ void cynd(struct property details[], int count, char city[], char nh[]) {
         printf("No more properties found in %s near: %s\n", city, nh);
     }
 }
-
-*/
 
 //......................
