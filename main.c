@@ -65,8 +65,6 @@ void displaybuilders(struct builders bui[],int count);
     struct builders bui[25];
 
 int main() {
-
-
     int propertyCount = 0;
     int capitalCount = 0;
     int buildersCount = 0;
