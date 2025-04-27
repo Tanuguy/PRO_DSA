@@ -42,6 +42,11 @@ struct builders{
     char ws[100];
 };
 
+struct property details[25];
+struct capital pri[25];
+struct builders bui[25];
+
+
 //property = pro
 void displaypro(struct property details[],int count);
 //Search by City
@@ -60,9 +65,7 @@ void ndprice(struct capital pri[],int prn,char nhp[]);
 void cynd(struct property details[],int count,char city[],char nh[]);
 //Display all Builders Information
 void displaybuilders(struct builders bui[],int count);
-    struct property details[25];
-    struct capital pri[25];
-    struct builders bui[25];
+
 
 int main() {
     int pro = 0;
@@ -246,7 +249,6 @@ int main() {
                     bytd(details,pro,tpd);
                     break;
                 case 6:
-
                     printf("Price Range: \n");
                     displayprice(pri,cap);
                     break;
@@ -385,7 +387,7 @@ void bytd(struct property details[],int count,char tpd[]) {
 }
 
 void displayprice(struct capital pri[],int ps){
-printf("Range Details\n");
+printf("Range Details:\n");
 for(int i=0;i<ps;i++){
     printf("Price Range: %s\n",pri[i].pr);
     printf("-------------------------------------\n\n\n");
