@@ -224,7 +224,7 @@ int main() {
 
                     switch (subchoice) {
                         case 1:
-                            citypro(details,details,city);
+                            citypro(details,pro,city);
                             break;
                         case 2:
                             char nh[100];
