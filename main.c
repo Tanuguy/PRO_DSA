@@ -5,7 +5,7 @@
 //Property Structure
 struct property {
     char proID[100];
-    char price[100];
+    int price;
     char city[100];
     char nh[100];
     char tpd[100];
@@ -58,9 +58,9 @@ void byprice(struct property details[],int count,int mp);
 //Fiter by Price Scope
 void bytd(struct property details[],int count,char tpd[]);
 //To display all Price ranges
-void displayprice(struct capital pri[],int ps);
+void displayprice(struct capital pri[],int count);
 //Search the Price Range by Neighborhood
-void ndprice(struct capital pri[],int prn,char nhp[]);
+void ndprice(struct capital pri[],int count,char nhp[]);
 //Search in City of Neighborhood
 void cynd(struct property details[],int count,char city[],char nh[]);
 //Display all Builders Information
@@ -84,9 +84,9 @@ int main() {
 
     // Read properties data
     while (fgets(buffer, 200, file) != NULL && pro < 25) {
-        sscanf(buffer, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,\n]",
+        sscanf(buffer, "%[^,],%d,%[^,],%[^,],%[^,],%[^,\n]",
                details[pro].proID,
-               details[pro].price,
+               &details[pro].price,
                details[pro].city,
                details[pro].nh,
                details[pro].tpd,
@@ -96,7 +96,7 @@ int main() {
     fclose(file);
 
     // Open the capital file
-    FILE *fr = fopen("C:/DSA Pro/PRrange.csv", "r");
+    FILE *fr = fopen("C:/DSA Pro/PRange.csv", "r");
     if (fr == NULL) {
         printf("Error opening capital file for reading!\n");
         return 1;
@@ -175,6 +175,9 @@ int main() {
                     printf("Thank you\n");
                     exit(0);
                     break;
+                default:
+                    printf("Invalid Choice\n");
+                    break;
             }break;
 
         case 2:
@@ -233,6 +236,9 @@ int main() {
                             printf("Thank you \n");
                             exit(0);
                             break;
+                        default:
+                            printf("Invalid Choice\n");
+                            break;
                     }
                     break;
 
@@ -266,7 +272,7 @@ int main() {
                     printf("Wrong choice\n");
                     break;
 
-                    break;
+
             }
     }
 
@@ -292,10 +298,10 @@ void displaybuilders(struct builders bui[],int count) {
 
 //Funtion to display all properties
 void displaypro(struct property details[], int count) {
-    printf("Property Details:\n");
+    printf("Property Details:\n\n");
     for (int i = 0; i < count; i++) {
         printf("Property ID: %s\n", details[i].proID);
-        printf("Price: %s\n", details[i].price);
+        printf("Price: %d\n", details[i].price);
         printf("City: %s\n", details[i].city);
         printf("Neighborhood: %s\n", details[i].nh);
         printf("Total Properties: %s\n", details[i].tpd);
@@ -311,7 +317,7 @@ void citypro(struct property details[],int count, char city[]) {
     for(int i=0;i<count;i++) {
         if(strstr(details[i].city,city)!=NULL){
             printf("Property ID: %s\n", details[i].proID);
-            printf("Price: %s\n", details[i].price);
+            printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
             printf("Total Properties: %s\n", details[i].tpd);
@@ -386,19 +392,19 @@ void bytd(struct property details[],int count,char tpd[]) {
     }
 }
 
-void displayprice(struct capital pri[],int ps){
-printf("Range Details:\n");
-for(int i=0;i<ps;i++){
+void displayprice(struct capital pri[],int count){
+printf("Range Details:\n\n");
+for(int i=0;i<count;i++){
     printf("Price Range: %s\n",pri[i].pr);
     printf("Neighborhood: %s\n",pri[i].nhp);
     printf("-------------------------------------\n\n\n");
 }
 }
 
-void ndprice(struct capital pri[],int prn,char nhp[]){
+void ndprice(struct capital pri[],int count,char nhp[]){
     int found = 0;
     printf("The Price Range of %s is:\n", nhp);
-    for (int i = 0; i < prn; i++) {
+    for (int i = 0; i < count; i++) {
         if (strstr(pri[i].nhp, nhp) != NULL) {
             printf("Neighborhood: %s\n", pri[i].nhp);
             printf("Price Range : %s\n", pri[i].pr);
