@@ -338,7 +338,7 @@ void bynd(struct property details[], int count, char nh[]) {
     for (int i = 0; i < count; i++) {
         if (strstr(details[i].nh, nh) != NULL) {
             printf("\nProperty ID: %s\n", details[i].proID);
-            printf("Price: %s\n", details[i].price);
+            printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
             printf("Pricing Details: %s\n", details[i].tpd);
@@ -358,7 +358,7 @@ void byprice(struct property details[],int count,int mp){
     for (int i = 0; i < count; i++) {
         if (details[i].price) {
             printf("\nProperty ID: %s\n", details[i].proID);
-            printf("Price: %s\n", details[i].price);
+            printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
             printf("Pricing Details: %s\n", details[i].tpd);
@@ -378,7 +378,7 @@ void bytd(struct property details[],int count,char tpd[]) {
     for (int i = 0; i < count; i++) {
         if (strstr(details[i].tpd, tpd) != NULL) {
             printf("\nProperty ID: %s\n", details[i].proID);
-            printf("Price: %s\n", details[i].price);
+            printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
             printf("Pricing Details: %s\n", details[i].tpd);
@@ -426,7 +426,7 @@ void cynd(struct property details[], int count, char city[], char nh[]) {
         // Check if the property matches the specified city and neighborhood
         if (strcmp(details[i].city, city) == 0 && strstr(details[i].nh, nh) != NULL) {
             printf("\nProperty ID: %s\n", details[i].proID);
-            printf("Price: %s\n", details[i].price);
+            printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
             printf("Pricing Details: %s\n", details[i].tpd);
