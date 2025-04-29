@@ -184,7 +184,6 @@ int main() {
 
         case 2:
 
-
             printf("What would you like to do?\n");
             printf("---------------------------------------\n");
             printf("1. Display all Properties\n");
@@ -239,8 +238,7 @@ int main() {
                         default:
                             printf("Invalid Choice\n");
                             break;
-                    }
-                    break;
+                    }break;
 
                 case 4:
                     int mp;
@@ -261,9 +259,7 @@ int main() {
                 default:
                     printf("Wrong choice\n");
                     break;
-
-
-            }
+            }break;
         case 3:
 
             printf("1. Display all Properties by Price Range\n");
