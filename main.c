@@ -149,6 +149,7 @@ int main() {
     printf("1. Do you want to go in Builders\n");
     printf("2. Do you want to go in Properties\n");
     printf("3. Do you want to go in Price Range \n");
+    printf("4. Exit\n");
     printf("---------------------------------------------------\n\n");
 
     printf("Enter your choice: ");
@@ -286,6 +287,9 @@ int main() {
                     exit(0);
 
             }
+        case 4:
+            printf("Thank you, Visit Again\n");
+            exit(0);
 
     }
 
