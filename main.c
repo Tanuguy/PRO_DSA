@@ -143,10 +143,12 @@ int main() {
     int choice;  //for Property switch
     int buichoice; //for builder Choice
     int subchoice; // in City area
+    int pricerange; //For Price range
 
     printf("--------------------------------------------------\n");
     printf("1. Do you want to go in Builders\n");
     printf("2. Do you want to go in Properties\n");
+    printf("3. Do you want to go in Price Range \n");
     printf("---------------------------------------------------\n\n");
 
     printf("Enter your choice: ");
@@ -190,12 +192,10 @@ int main() {
             printf("3. Search Property By City\n");
             printf("4. Search Property By Price\n");
             printf("5. Search Property By Price Scope\n");
-            printf("6. Display all Properties by Price Range\n");
-            printf("7. Display all Price Range by Neighborhood\n");
-            printf("8. Exit\n");
+            printf("6. Exit\n");
             printf("-------------------------------------------\n\n");
 
-            printf("Enter you choice(1-8): ");
+            printf("Enter you choice(1-6): ");
             scanf("%d",&choice);
 
             //Switich Statement
@@ -255,16 +255,6 @@ int main() {
                     bytd(details,pro,tpd);
                     break;
                 case 6:
-                    printf("Price Range: \n");
-                    displayprice(pri,cap);
-                    break;
-                case 7:
-                    char nhp[100];
-                    printf("Enter the neighborhood Price Range you are looking for:");
-                    scanf("%s",nhp);
-                    ndprice(pri,cap,nhp);
-                    break;
-                case 8:
                     printf("Thank you\nYour Dream Home is waiting for you\n");
                     exit(0);
                     break;
@@ -274,6 +264,33 @@ int main() {
 
 
             }
+        case 3:
+
+            printf("1. Display all Properties by Price Range\n");
+            printf("2. Display all Price Range by Neighborhood\n");
+            printf("3. Exit\n");
+
+            printf("Enter your Choice(1-3):");
+            scanf("%d",&pricerange);
+
+
+            switch (pricerange) {
+                case 1:
+                    printf("Price Range: \n");
+                    displayprice(pri,cap);
+                    break;
+                case 2:
+                    char nhp[100];
+                    printf("Enter the neighborhood Price Range you are looking for:");
+                    scanf("%s",nhp);
+                    ndprice(pri,cap,nhp);
+                    break;
+                case 3:
+                    printf("Thank you \n");
+                    exit(0);
+
+            }
+
     }
 
 return 0;
