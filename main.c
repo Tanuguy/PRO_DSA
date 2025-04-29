@@ -286,11 +286,11 @@ int main() {
                     printf("Thank you \n");
                     exit(0);
 
-            }
+            }break;
         case 4:
             printf("Thank you, Visit Again\n");
             exit(0);
-
+            break;
     }
 
 return 0;
