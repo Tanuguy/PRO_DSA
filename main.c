@@ -65,6 +65,8 @@ void ndprice(struct capital pri[],int count,char nhp[]);
 void cynd(struct property details[],int count,char city[],char nh[]);
 //Display all Builders Information
 void displaybuilders(struct builders bui[],int count);
+//Search specific Builders
+void bybui(struct builders bui[],int count,char name[]);
 
 
 int main() {
@@ -159,7 +161,7 @@ int main() {
         case 1:
             printf("-----------------------------------------\n");
             printf("1. Do you want to See all Builder Details\n");
-            printf("2. Do You want .......\n");
+            printf("2. Do You want see Specific Builders Details\n");
             printf("3. Exit\n");
             printf("-------------------------------------------\n\n");
 
@@ -173,7 +175,12 @@ int main() {
                     displaybuilders(bui,build);
                     break;
                 case 2:
+                    char name[100];
+                    printf("Enter the Builders you are looking for in UK:");
+                    scanf("%s",name);
+                    bynd(details,build,name);
                     break;
+
                 case 3:
                     printf("Thank you\n");
                     exit(0);
@@ -455,6 +462,29 @@ void cynd(struct property details[], int count, char city[], char nh[]) {
 
     if (!found) {
         printf("No more properties found in %s near: %s\n", city, nh);
+    }
+}
+
+void bybui(struct builders bui[],int count,char name[]) {
+    int found = 0;
+    printf("Searching for Builder: %s\n", name);
+    for (int i = 0; i < count; i++) {
+        if (strstr(bui[i].name, name) != NULL) {
+            printf("ID:%s\n",bui[i].id);
+            printf("Name: %s\n",bui[i].name);
+            printf("Contact no.: %s\n",bui[i].cn);
+            printf("Specialization: %s\n",bui[i].Spe);
+            printf("City: %s\n",bui[i].city);
+            printf("Email Id: %s\n",bui[i].eid);
+            printf("Years Of Experience: %s\n",bui[i].ye);
+            printf("Completed Projects: %s\n",bui[i].cp);
+            printf("Website: %s\n",bui[i].ws);
+            printf("----------------------------\n\n\n");
+            found = 1;
+        }
+    }
+    if (!found) {
+        printf("No Builder found : %s\n",name);
     }
 }
 
