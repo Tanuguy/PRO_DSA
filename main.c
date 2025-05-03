@@ -504,7 +504,7 @@ void bybui(struct builders bui[],int count,char name[]) {
     }
 }
 
-void aval(struct property details[],int count, char aval[]) {
+void byaval(struct property details[],int count, char aval[]) {
     int found = 0;
     for(int i=0;i<count;i++) {
         if(strstr(details[i].aval,aval)!=NULL){
