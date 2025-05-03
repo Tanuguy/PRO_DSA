@@ -71,7 +71,7 @@ void cynd(struct property details[],int count,char city[],char nh[]);
 void displaybuilders(struct builders bui[],int count);
 //Search specific Builders
 void bybui(struct builders bui[],int count,char name[]);
-//check Properties Avalibility
+//check Properties Availability
 void byaval(struct property details[],int count,char aval[]);
 
 
