@@ -43,10 +43,13 @@ struct builders{
     char ws[100];
 };
 
-struct property details[25];
-struct capital pri[25];
-struct builders bui[25];
+struct combined {
+    struct property details[25];
+    struct capital pri[25];
+    struct builders bui[25];
+};
 
+struct combined con;
 
 //property = pro
 void displaypro(struct property details[],int count);
@@ -90,13 +93,13 @@ int main() {
     // Read properties data
     while (fgets(buffer, 200, file) != NULL && pro < 25) {
         sscanf(buffer, "%[^,],%d,%[^,],%[^,],%[^,],%[^,],%[^\n,]",
-               details[pro].proID,
-               &details[pro].price,
-               details[pro].city,
-               details[pro].nh,
-               details[pro].tpd,
-               details[pro].at,
-               details[pro].aval);
+               con.details[pro].proID,
+               &con.details[pro].price,
+               con.details[pro].city,
+               con.details[pro].nh,
+               con.details[pro].tpd,
+               con.details[pro].at,
+               con.details[pro].aval);
         pro++;
     }
     fclose(file);
@@ -112,8 +115,8 @@ int main() {
     // Read capital data
     while (fgets(buffer, 200, fr) != NULL && cap < 25) {
         sscanf(buffer, "%[^,],%[^,\n]",
-               pri[cap].pr,
-               pri[cap].nhp);
+               con.pri[cap].pr,
+               con.pri[cap].nhp);
 
         cap++;
     }
@@ -130,15 +133,15 @@ int main() {
     // Read builders data
     while (fgets(buffer, 200, fb) != NULL && build < 25) {
         sscanf(buffer, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,\n]",
-               bui[build].id,
-               bui[build].name,
-               bui[build].cn,
-               bui[build].Spe,
-               bui[build].city,
-               bui[build].eid,
-               bui[build].ye,
-               bui[build].cp,
-               bui[build].ws);
+               con.bui[build].id,
+               con.bui[build].name,
+               con.bui[build].cn,
+               con.bui[build].Spe,
+               con.bui[build].city,
+               con.bui[build].eid,
+               con.bui[build].ye,
+               con.bui[build].cp,
+               con.bui[build].ws);
         build++;
     }
     fclose(fb);
@@ -176,13 +179,13 @@ int main() {
             switch (buichoice) {
                 case 1:
                     printf("Builders Information\n\n");
-                    displaybuilders(bui,build);
+                    displaybuilders(con.bui,build);
                     break;
                 case 2:
                     char name[100];
                     printf("Enter the Builders you are looking for in UK:");
                     scanf("%s",name);
-                    bybui(bui,build,name);
+                    bybui(con.bui,build,name);
                     break;
 
                 case 3:
@@ -214,13 +217,13 @@ int main() {
             switch(choice) {
                 case 1:
                     printf("Data Property\n");
-                    displaypro(details,pro);
+                    displaypro(con.details,pro);
                     break;
                 case 2:
                     char nh[100];
                     printf("Enter the neighborhood you are looking for in UK:");
                     scanf("%s",nh);
-                    bynd(details,pro,nh);
+                    bynd(con.details,pro,nh);
                     break;
                 case 3:
                     char city[100];
@@ -236,13 +239,13 @@ int main() {
 
                     switch (subchoice) {
                         case 1:
-                            citypro(details,pro,city);
+                            citypro(con.details,pro,city);
                             break;
                         case 2:
                             char nh[100];
                             printf("Enter want neighborhood you looking for in %s:",city);
                             scanf("%s",nh);
-                            cynd(details,pro,city,nh);
+                            cynd(con.details,pro,city,nh);
                             break;
                         case 3:
                             printf("Thank you \n");
@@ -257,19 +260,19 @@ int main() {
                     int mp;
                     printf("Enter the Max Price in which you looking for:");
                     scanf("%d",&mp);
-                    byprice(details,pro,mp);
+                    byprice(con.details,pro,mp);
                     break;
                 case 5:
                     char tpd[100];
                     printf("Enter the Price Scope you are looking for:");
                     scanf("%s",tpd);
-                    bytd(details,pro,tpd);
+                    bytd(con.details,pro,tpd);
                     break;
                 case 6:
                     char aval[100];
                     printf("Enter the availability of Property you are looking for:");
                     scanf("%s",aval);
-                    byaval(details,pro,aval);
+                    byaval(con.details,pro,aval);
                     break;
                 case 7:
                     printf("Thank you\nYour Dream Home is waiting for you\n");
@@ -292,13 +295,13 @@ int main() {
             switch (pricerange) {
                 case 1:
                     printf("Price Range: \n");
-                    displayprice(pri,cap);
+                    displayprice(con.pri,cap);
                     break;
                 case 2:
                     char nhp[100];
                     printf("Enter the neighborhood Price Range you are looking for:");
                     scanf("%s",nhp);
-                    ndprice(pri,cap,nhp);
+                    ndprice(con.pri,cap,nhp);
                     break;
                 case 3:
                     printf("Thank you \n");
