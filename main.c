@@ -10,6 +10,7 @@ struct property {
     char nh[100];
     char tpd[100];
     char at[100];
+    char aval[100];
 };
 
 //Price Range Structure
@@ -67,6 +68,8 @@ void cynd(struct property details[],int count,char city[],char nh[]);
 void displaybuilders(struct builders bui[],int count);
 //Search specific Builders
 void bybui(struct builders bui[],int count,char name[]);
+//check Properties Avalibility
+void byaval(struct property details[],int count,char aval[]);
 
 
 int main() {
@@ -86,13 +89,14 @@ int main() {
 
     // Read properties data
     while (fgets(buffer, 200, file) != NULL && pro < 25) {
-        sscanf(buffer, "%[^,],%d,%[^,],%[^,],%[^,],%[^,\n]",
+        sscanf(buffer, "%[^,],%d,%[^,],%[^,],%[^,],%[^,],%[^\n,]",
                details[pro].proID,
                &details[pro].price,
                details[pro].city,
                details[pro].nh,
                details[pro].tpd,
-               details[pro].at);
+               details[pro].at,
+               details[pro].aval);
         pro++;
     }
     fclose(file);
@@ -178,7 +182,7 @@ int main() {
                     char name[100];
                     printf("Enter the Builders you are looking for in UK:");
                     scanf("%s",name);
-                    bynd(details,build,name);
+                    bybui(bui,build,name);
                     break;
 
                 case 3:
@@ -199,10 +203,11 @@ int main() {
             printf("3. Search Property By City\n");
             printf("4. Search Property By Price\n");
             printf("5. Search Property By Price Scope\n");
-            printf("6. Exit\n");
+            printf("6. Check Availability of properties\n");
+            printf("7. Exit\n");
             printf("-------------------------------------------\n\n");
 
-            printf("Enter you choice(1-6): ");
+            printf("Enter you choice(1-7): ");
             scanf("%d",&choice);
 
             //Switich Statement
@@ -261,6 +266,12 @@ int main() {
                     bytd(details,pro,tpd);
                     break;
                 case 6:
+                    char aval[100];
+                    printf("Enter the availability of Property you are looking for:");
+                    scanf("%s",aval);
+                    byaval(details,pro,aval);
+                    break;
+                case 7:
                     printf("Thank you\nYour Dream Home is waiting for you\n");
                     exit(0);
                     break;
@@ -330,6 +341,7 @@ void displaypro(struct property details[], int count) {
         printf("Neighborhood: %s\n", details[i].nh);
         printf("Total Properties: %s\n", details[i].tpd);
         printf("AT: %s\n", details[i].at);
+        printf("Availability: %s\n",details[i].aval);
         printf("---------------------------\n");
     }
 }
@@ -367,6 +379,7 @@ void bynd(struct property details[], int count, char nh[]) {
             printf("Neighborhood: %s\n", details[i].nh);
             printf("Pricing Details: %s\n", details[i].tpd);
             printf("Authentication Type: %s\n", details[i].at);
+            printf("Availability: %s\n",details[i].aval);
             printf("------------------------------------\n\n\n");
             found = 1;
         }
@@ -387,6 +400,7 @@ void byprice(struct property details[],int count,int mp){
             printf("Neighborhood: %s\n", details[i].nh);
             printf("Pricing Details: %s\n", details[i].tpd);
             printf("Authentication Type: %s\n", details[i].at);
+            printf("Availability: %s\n",details[i].aval);
             printf("----------------------------------\n\n\n");
             found = 1;
         }
@@ -407,6 +421,7 @@ void bytd(struct property details[],int count,char tpd[]) {
             printf("Neighborhood: %s\n", details[i].nh);
             printf("Pricing Details: %s\n", details[i].tpd);
             printf("Authentication Type: %s\n", details[i].at);
+            printf("Availability: %s\n",details[i].aval);
             printf("------------------------------------\n\n\n");
             found = 1;
         }
@@ -455,6 +470,7 @@ void cynd(struct property details[], int count, char city[], char nh[]) {
             printf("Neighborhood: %s\n", details[i].nh);
             printf("Pricing Details: %s\n", details[i].tpd);
             printf("Authentication Type: %s\n", details[i].at);
+            printf("Availability: %s\n",details[i].aval);
             printf("------------------------------------\n\n\n");
             found = 1;
         }
@@ -485,6 +501,26 @@ void bybui(struct builders bui[],int count,char name[]) {
     }
     if (!found) {
         printf("No Builder found : %s\n",name);
+    }
+}
+
+void aval(struct property details[],int count, char aval[]) {
+    int found = 0;
+    for(int i=0;i<count;i++) {
+        if(strstr(details[i].aval,aval)!=NULL){
+            printf("Property ID: %s\n", details[i].proID);
+            printf("Price: %d\n", details[i].price);
+            printf("City: %s\n", details[i].city);
+            printf("Neighborhood: %s\n", details[i].nh);
+            printf("Total Properties: %s\n", details[i].tpd);
+            printf("AT: %s\n", details[i].at);
+            printf("Availability: %s\n",details[i].aval);
+            printf("---------------------------\n");
+            found = 1;
+        }
+    }
+    if(!found) {
+        printf("Property input not valid\n");
     }
 }
 
