@@ -73,6 +73,8 @@ void displaybuilders(struct builders bui[],int count);
 void bybui(struct builders bui[],int count,char name[]);
 //check Properties Availability
 void byaval(struct property details[],int count,char aval[]);
+//Print in neighborhood according to Price
+void ndpr(struct property details[],char nh[100],int mp,int count);
 
 
 int main() {
@@ -153,6 +155,7 @@ int main() {
     int buichoice; //for builder Choice
     int subchoice; // in City area
     int pricerange; //For Price range
+    int ndbyprice; //To nd as price
 
     printf("--------------------------------------------------\n");
     printf("1. Do you want to go in Builders\n");
@@ -232,7 +235,7 @@ int main() {
 
                     printf("1. Do you want to See all properties in %s\n",city);
                     printf("2. Do you want to see specific Properties in %s\n",city);
-                    printf("3. Exit\n");
+                    printf("3. Exit\n\n");
 
                     printf("Enter your Choice further:");
                     scanf("%d",&subchoice);
@@ -245,7 +248,24 @@ int main() {
                             char nh[100];
                             printf("Enter want neighborhood you looking for in %s:",city);
                             scanf("%s",nh);
-                            cynd(con.details,pro,city,nh);
+
+                            printf("1. Do you want to see all properties in %s\n",nh);
+                            printf("2. Do you want to as per price in %s\n\n",nh);
+
+                            printf("Enter your Choice further:");
+                            scanf("%d",&ndbyprice);
+
+                            switch (ndbyprice) {
+                                case 1:
+                                    cynd(con.details,pro,city,nh);
+                                    break;
+                                case 2:
+                                    int mp;
+                                    printf("Enter the Max Price in which you looking for:");
+                                    scanf("%d",&mp);
+                                    ndpr(con.details,nh,mp,pro);
+                                    break;
+                            }
                             break;
                         case 3:
                             printf("Thank you \n");
@@ -289,10 +309,10 @@ int main() {
             printf("3. Exit\n");
 
             printf("Enter your Choice(1-3):");
-            scanf("%d",&pricerange);
+            scanf("%d",&ndbyprice);
 
 
-            switch (pricerange) {
+            switch (ndbyprice) {
                 case 1:
                     printf("Price Range: \n");
                     displayprice(con.pri,cap);
@@ -526,5 +546,31 @@ void byaval(struct property details[],int count, char aval[]) {
         printf("Property input not valid\n");
     }
 }
+
+void ndpr(struct property details[],char nh[100],int mp,int count) {
+    int found = 0;
+    printf("Searching for properties in %s in: %d\n", nh, mp);
+
+    for (int i = 0; i < count; i++) {
+        int found = 0;
+        // Check if the property matches the specified city and neighborhood
+        if (strcmp(details[i].nh, nh) == 0 && details[i].price < mp) {
+            printf("\nProperty ID: %s\n", details[i].proID);
+            printf("Price: %d\n", details[i].price);
+            printf("City: %s\n", details[i].city);
+            printf("Neighborhood: %s\n", details[i].nh);
+            printf("Pricing Details: %s\n", details[i].tpd);
+            printf("Authentication Type: %s\n", details[i].at);
+            printf("Availability: %s\n",details[i].aval);
+            printf("------------------------------------\n\n\n");
+            found = 1;
+        }
+    }
+
+    if (!found) {
+        printf("No more properties found in %s under: %d\n", nh, mp);
+    }
+}
+
 
 //......................
