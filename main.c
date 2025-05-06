@@ -155,7 +155,8 @@ int main() {
     int buichoice; //for builder Choice
     int subchoice; // in City area
     int pricerange; //For Price range
-    int ndbyprice; //To nd as price
+    int ndbyprice; //To nd as price via city
+    int ndtoprice; //Direct ND to Price
 
     printf("--------------------------------------------------\n");
     printf("1. Do you want to go in Builders\n");
@@ -226,7 +227,24 @@ int main() {
                     char nh[100];
                     printf("Enter the neighborhood you are looking for in UK:");
                     scanf("%s",nh);
-                    bynd(con.details,pro,nh);
+
+
+                    printf("1. Do you want to see all properties in %s\n",nh);
+                    printf("2. Do you want to as per price in %s\n\n",nh);
+                    printf("Enter your choice: ");
+                    scanf("%d",&ndtoprice);
+
+                    switch (ndtoprice) {
+                        case 1:
+                         bynd(con.details,pro,nh);
+                            break;
+                        case 2:
+                            int mp;
+                            printf("Enter the Max Price in which you looking for:");
+                            scanf("%d",&mp);
+                            ndpr(con.details,nh,mp,pro);
+                            break;
+                    }
                     break;
                 case 3:
                     char city[100];
