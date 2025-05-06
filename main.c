@@ -157,6 +157,7 @@ int main() {
     int pricerange; //For Price range
     int ndbyprice; //To nd as price via city
     int ndtoprice; //Direct ND to Price
+    int pricetopr; // price to price range
 
     printf("--------------------------------------------------\n");
     printf("1. Do you want to go in Builders\n");
@@ -298,7 +299,21 @@ int main() {
                     int mp;
                     printf("Enter the Max Price in which you looking for:");
                     scanf("%d",&mp);
-                    byprice(con.details,pro,mp);
+
+
+                    printf("1. Do you want to see Properties in price range");
+                    printf("2. Do you want to as per price range\n\n",mp);
+
+                    printf("Enter your Choice further:");
+                    scanf("%d",&pricetopr);
+
+                    switch (pricetopr) {
+                        case 1:
+                            byprice(con.details,pro,mp);
+                            break;
+                        case 2:
+                            break;
+                    }
                     break;
                 case 5:
                     char tpd[100];
