@@ -301,7 +301,7 @@ int main() {
                     scanf("%d",&mp);
 
 
-                    printf("1. Do you want to see Properties in price range");
+                    printf("1. Do you want to see Properties in price range\n");
                     printf("2. Do you want to as per price range\n\n",mp);
 
                     printf("Enter your Choice further:");
