@@ -553,7 +553,7 @@ void ndpr(struct property details[],char nh[100],int mp,int count) {
 
     for (int i = 0; i < count; i++) {
         // Check if the property matches the specified neighborhood and price
-        if (strcmp(details[i].nh, nh) == 0 && details[i].price <= mp) {
+        if (strstr(details[i].nh, nh) == 0 && details[i].price <= mp) {
             printf("\nProperty ID: %s\n", details[i].proID);
             printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
