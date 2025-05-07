@@ -75,6 +75,8 @@ void bybui(struct builders bui[],int count,char name[]);
 void byaval(struct property details[],int count,char aval[]);
 //Print in neighborhood according to Price
 void ndpr(struct property details[],char nh[100],int mp,int count);
+//City to nh to price
+void cyndpr(struct property details[],char nh[100],int mp,int count,char city[100]);
 
 
 int main() {
@@ -224,7 +226,7 @@ int main() {
                     printf("Data Property\n");
                     displaypro(con.details,pro);
                     break;
-                case 2:
+                case 2: // NH Fun
                     char nh[100];
                     printf("Enter the neighborhood you are looking for in UK:");
                     scanf("%s",nh);
@@ -236,10 +238,10 @@ int main() {
                     scanf("%d",&ndtoprice);
 
                     switch (ndtoprice) {
-                        case 1:
+                        case 1: // All NH in UK
                          bynd(con.details,pro,nh);
                             break;
-                        case 2:
+                        case 2: // NH to Price
                             int mp;
                             printf("Enter the Max Price in which you looking for:");
                             scanf("%d",&mp);
@@ -247,7 +249,7 @@ int main() {
                             break;
                     }
                     break;
-                case 3:
+                case 3:// City Fun Case study
                     char city[100];
                     printf("Enter the City you are looking for:");
                     scanf("%s",city);
@@ -260,10 +262,10 @@ int main() {
                     scanf("%d",&subchoice);
 
                     switch (subchoice) {
-                        case 1:
+                        case 1: // ALL City calling
                             citypro(con.details,pro,city);
                             break;
-                        case 2:
+                        case 2: // NH of Base of City
                             char nh[100];
                             printf("Enter want neighborhood you looking for in %s:",city);
                             scanf("%s",nh);
@@ -275,14 +277,14 @@ int main() {
                             scanf("%d",&ndbyprice);
 
                             switch (ndbyprice) {
-                                case 1:
+                                case 1: // city to nh inside
                                     cynd(con.details,pro,city,nh);
                                     break;
-                                case 2:
+                                case 2: // city to nh to price
                                     int mp;
                                     printf("Enter the Max Price in which you looking for:");
                                     scanf("%d",&mp);
-                                    ndpr(con.details,nh,mp,pro);
+                                    cyndpr(con.details,nh,mp,pro,city);
                                     break;
                             }
                             break;
@@ -295,7 +297,7 @@ int main() {
                             break;
                     }break;
 
-                case 4:
+                case 4: //Price Fun
                     int mp;
                     printf("Enter the Max Price in which you looking for:");
                     scanf("%d",&mp);
@@ -308,26 +310,26 @@ int main() {
                     scanf("%d",&pricetopr);
 
                     switch (pricetopr) {
-                        case 1:
+                        case 1: // All Price details
                             byprice(con.details,pro,mp);
                             break;
                         case 2:
                             break;
                     }
                     break;
-                case 5:
+                case 5: // Price scope fun
                     char tpd[100];
                     printf("Enter the Price Scope you are looking for:");
                     scanf("%s",tpd);
                     bytd(con.details,pro,tpd);
                     break;
-                case 6:
+                case 6: // Aval check Fun
                     char aval[100];
                     printf("Enter the availability of Property you are looking for:");
                     scanf("%s",aval);
                     byaval(con.details,pro,aval);
                     break;
-                case 7:
+                case 7: // Exit
                     printf("Thank you\nYour Dream Home is waiting for you\n");
                     exit(0);
                     break;
@@ -586,7 +588,7 @@ void ndpr(struct property details[],char nh[100],int mp,int count) {
 
     for (int i = 0; i < count; i++) {
         // Check if the property matches the specified neighborhood and price
-        if (strstr(details[i].nh, nh) == 0 && details[i].price <= mp) {
+        if (strstr(details[i].nh, nh) != NULL && details[i].price <= mp) {
             printf("\nProperty ID: %s\n", details[i].proID);
             printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
@@ -603,6 +605,32 @@ void ndpr(struct property details[],char nh[100],int mp,int count) {
         printf("No more properties found in %s under: %d\n", nh, mp);
     }
 }
+
+void cyndpr(struct property details[],char nh[100],int mp,int count,char city[100]) {
+    int found = 0;
+    printf("Searching for properties in %s in: %d\n", nh, mp);
+
+    for (int i = 0; i < count; i++) {
+        // Check if the property matches the specified neighborhood and price
+        if (strcmp(details[i].city, city) == 0 && strstr(details[i].nh, nh) != NULL && details[i].price <= mp) {
+            printf("\nProperty ID: %s\n", details[i].proID);
+            printf("Price: %d\n", details[i].price);
+            printf("City: %s\n", details[i].city);
+            printf("Neighborhood: %s\n", details[i].nh);
+            printf("Pricing Details: %s\n", details[i].tpd);
+            printf("Authentication Type: %s\n", details[i].at);
+            printf("Availability: %s\n",details[i].aval);
+            printf("------------------------------------\n\n\n");
+            found = 1;
+        }
+    }
+
+    if (!found) {
+        printf("No more properties found in %s under: %d\n", nh, mp);
+    }
+}
+
+
 
 
 //......................
