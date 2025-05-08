@@ -15,10 +15,12 @@ struct property {
 
 //Price Range Structure
 struct capital{
-// Price range
-char pr[100];
-// neighborhood
-char nhp[100];
+    // Price range from
+    int ps;
+    // Price range to
+    int pe;
+    // neighborhood
+    char nhp[100];
 };
 
 //Builders information structure
@@ -77,7 +79,8 @@ void byaval(struct property details[],int count,char aval[]);
 void ndpr(struct property details[],char nh[100],int mp,int count);
 //City to nh to price
 void cyndpr(struct property details[],char nh[100],int mp,int count,char city[100]);
-
+// Price to Price Range
+void pripr(struct property details[],struct capital pri[],int count, int mp);
 
 int main() {
     int pro = 0;
@@ -118,8 +121,9 @@ int main() {
 
     // Read capital data
     while (fgets(buffer, 200, fr) != NULL && cap < 25) {
-        sscanf(buffer, "%[^,],%[^,\n]",
-               con.pri[cap].pr,
+        sscanf(buffer, "%d,%d,%[^,\n]",
+               &con.pri[cap].ps,
+               &con.pri[cap].pe,
                con.pri[cap].nhp);
 
         cap++;
@@ -314,6 +318,7 @@ int main() {
                             byprice(con.details,pro,mp);
                             break;
                         case 2:
+                            pripr(con.details,con.pri,pro,mp);
                             break;
                     }
                     break;
@@ -389,7 +394,7 @@ void displaybuilders(struct builders bui[],int count) {
 }
 
 
-//Funtion to display all properties
+//Fun to display all properties
 void displaypro(struct property details[], int count) {
     printf("Property Details:\n\n");
     for (int i = 0; i < count; i++) {
@@ -405,7 +410,7 @@ void displaypro(struct property details[], int count) {
 }
 
 
-//Funtion to Search By City
+//Fun to Search By City
 void citypro(struct property details[],int count, char city[]) {
     int found = 0;
     for(int i=0;i<count;i++) {
@@ -425,7 +430,7 @@ void citypro(struct property details[],int count, char city[]) {
     }
 }
 
-// Funtion to Search by neighborhood
+// Fun to Search by neighborhood
 void bynd(struct property details[], int count, char nh[]) {
     int found = 0;
     printf("Searching for properties near: %s\n", nh);
@@ -447,6 +452,7 @@ void bynd(struct property details[], int count, char nh[]) {
     }
 }
 
+//Fun to Sort by City
 void byprice(struct property details[],int count,int mp){
     int found = 0;
     printf("Property under %d:\n",mp);
@@ -468,6 +474,7 @@ void byprice(struct property details[],int count,int mp){
     }
 }
 
+//Fun to Search By Price Scope
 void bytd(struct property details[],int count,char tpd[]) {
     int found = 0;
     printf("Searching for properties near: %s\n", tpd);
@@ -489,22 +496,26 @@ void bytd(struct property details[],int count,char tpd[]) {
     }
 }
 
+//Fun to Display Price range
 void displayprice(struct capital pri[],int count){
 printf("Range Details:\n\n");
 for(int i=0;i<count;i++){
-    printf("Price Range: %s\n",pri[i].pr);
+    printf("Price Range From: %d\n",pri[i].ps);
+    printf("Price Range To: %d\n",pri[i].pe);
     printf("Neighborhood: %s\n",pri[i].nhp);
     printf("-------------------------------------\n\n\n");
 }
 }
 
+//Fun to Search the price range by neighborhood
 void ndprice(struct capital pri[],int count,char nhp[]){
     int found = 0;
     printf("The Price Range of %s is:\n", nhp);
     for (int i = 0; i < count; i++) {
         if (strstr(pri[i].nhp, nhp) != NULL) {
             printf("Neighborhood: %s\n", pri[i].nhp);
-            printf("Price Range : %s\n", pri[i].pr);
+            printf("Price Range From: %d\n", pri[i].ps);
+            printf("Price Range to: %d\n",pri[i].pe);
             printf("---------------------------------------\n\n\n");
             found = 1;
         }
@@ -514,6 +525,7 @@ void ndprice(struct capital pri[],int count,char nhp[]){
     }
 }
 
+//Fun to Search in city to nh
 void cynd(struct property details[], int count, char city[], char nh[]) {
     int found = 0;
     printf("Searching for properties in %s near: %s\n", city, nh);
@@ -539,6 +551,7 @@ void cynd(struct property details[], int count, char city[], char nh[]) {
     }
 }
 
+//Fun to Search by builders name
 void bybui(struct builders bui[],int count,char name[]) {
     int found = 0;
     printf("Searching for Builder: %s\n", name);
@@ -562,6 +575,7 @@ void bybui(struct builders bui[],int count,char name[]) {
     }
 }
 
+//Fun to Check aval of property
 void byaval(struct property details[],int count, char aval[]) {
     int found = 0;
     for(int i=0;i<count;i++) {
@@ -582,6 +596,7 @@ void byaval(struct property details[],int count, char aval[]) {
     }
 }
 
+//Fun to Search in nh to price
 void ndpr(struct property details[],char nh[100],int mp,int count) {
     int found = 0;
     printf("Searching for properties in %s in: %d\n", nh, mp);
@@ -606,6 +621,7 @@ void ndpr(struct property details[],char nh[100],int mp,int count) {
     }
 }
 
+//Fun to Search in city to nh to price
 void cyndpr(struct property details[],char nh[100],int mp,int count,char city[100]) {
     int found = 0;
     printf("Searching for properties in %s in: %d\n", nh, mp);
@@ -630,6 +646,36 @@ void cyndpr(struct property details[],char nh[100],int mp,int count,char city[10
     }
 }
 
+//Fun from Price to Price range
+void pripr(struct property details[],struct capital pri[],int count, int mp) {
+    int found = 0;
+    printf("Searching for properties in: %d\n", mp);
+
+    for (int i = 0; i < count; i++) {
+        // Check if the property matches the specified neighborhood and price
+        if (details[i].price <=mp && pri[i].ps <= mp && pri[i].pe >= mp) {
+            printf("\nProperty ID: %s\n", details[i].proID);
+            printf("Price: %d\n", details[i].price);
+            printf("City: %s\n", details[i].city);
+            printf("Neighborhood: %s\n", details[i].nh);
+            printf("Pricing Details: %s\n", details[i].tpd);
+            printf("Authentication Type: %s\n", details[i].at);
+            printf("Availability: %s\n",details[i].aval);
+            printf("------------------------------------\n\n\n");
+
+            printf("Price Range Details:\n\n");
+            printf("Price Range From: %d\n",pri[i].ps);
+            printf("Price Range To: %d\n",pri[i].pe);
+            printf("Neighborhood: %s\n",pri[i].nhp);
+            printf("-------------------------------------\n\n\n");
+            found = 1;
+        }
+    }
+
+    if (!found) {
+        printf("No more properties found in %d\n",mp);
+    }
+}
 
 
 
