@@ -160,7 +160,6 @@ int main() {
     int choice;  //for Property switch
     int buichoice; //for builder Choice
     int subchoice; // in City area
-    int pricerange; //For Price range
     int ndbyprice; //To nd as price via city
     int ndtoprice; //Direct ND to Price
     int pricetopr; // price to price range
