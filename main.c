@@ -697,9 +697,11 @@ void pripr(struct property details[],struct capital pri[],int count, int mp) {
 
 void buy(struct property details[],struct builders bui[],struct capital pri[],int count,int id) {
     int found = 0;
-    printf("Searching for Builder: %s\n", bui->name);
+    printf("Searching for Builder:");
     for (int i = 0; i < count; i++) {
         if (id==bui[i].id) {
+            printf("Builder Information of Selected Property: \n");
+            printf("---------------------------\n");
             printf("ID:%d\n",bui[i].id);
             printf("Name: %s\n",bui[i].name);
             printf("Contact no.: %s\n",bui[i].cn);
@@ -711,6 +713,17 @@ void buy(struct property details[],struct builders bui[],struct capital pri[],in
             printf("Website: %s\n",bui[i].ws);
             printf("----------------------------\n\n\n");
             found = 1;
+
+            printf("Property Information you want:\n");
+            printf("----------------------------------------\n");
+            printf("\nProperty ID: %d\n", details[i].proID);
+            printf("Price: %d\n", details[i].price);
+            printf("City: %s\n", details[i].city);
+            printf("Neighborhood: %s\n", details[i].nh);
+            printf("Pricing Details: %s\n", details[i].tpd);
+            printf("Authentication Type: %s\n", details[i].at);
+            printf("Availability: %s\n",details[i].aval);
+            printf("------------------------------------\n\n\n");
         }
     }
     if (!found) {
