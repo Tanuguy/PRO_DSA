@@ -398,7 +398,7 @@ return 0;
 void displaybuilders(struct builders bui[],int count) {
     printf("Builders Details\n\n");
     for(int i=0;i<count;i++) {
-        printf("ID:%s\n",bui[i].id);
+        printf("ID:%d\n",bui[i].id);
         printf("Name: %s\n",bui[i].name);
         printf("Contact no.: %s\n",bui[i].cn);
         printf("Specialization: %s\n",bui[i].Spe);
@@ -433,7 +433,7 @@ void citypro(struct property details[],int count, char city[]) {
     int found = 0;
     for(int i=0;i<count;i++) {
         if(strstr(details[i].city,city)!=NULL){
-            printf("Property ID: %s\n", details[i].proID);
+            printf("Property ID: %d\n", details[i].proID);
             printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
@@ -454,7 +454,7 @@ void bynd(struct property details[], int count, char nh[]) {
     printf("Searching for properties near: %s\n", nh);
     for (int i = 0; i < count; i++) {
         if (strstr(details[i].nh, nh) != NULL) {
-            printf("\nProperty ID: %s\n", details[i].proID);
+            printf("\nProperty ID: %d\n", details[i].proID);
             printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
@@ -476,7 +476,7 @@ void byprice(struct property details[],int count,int mp){
     printf("Property under %d:\n",mp);
     for (int i = 0; i < count; i++) {
         if (details[i].price <= mp) {
-            printf("\nProperty ID: %s\n", details[i].proID);
+            printf("\nProperty ID: %d\n", details[i].proID);
             printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
@@ -498,7 +498,7 @@ void bytd(struct property details[],int count,char tpd[]) {
     printf("Searching for properties near: %s\n", tpd);
     for (int i = 0; i < count; i++) {
         if (strstr(details[i].tpd, tpd) != NULL) {
-            printf("\nProperty ID: %s\n", details[i].proID);
+            printf("\nProperty ID: %d\n", details[i].proID);
             printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
@@ -552,7 +552,7 @@ void cynd(struct property details[], int count, char city[], char nh[]) {
         int found = 0;
         // Check if the property matches the specified city and neighborhood
         if (strcmp(details[i].city, city) == 0 && strstr(details[i].nh, nh) != NULL) {
-            printf("\nProperty ID: %s\n", details[i].proID);
+            printf("\nProperty ID: %d\n", details[i].proID);
             printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
@@ -575,7 +575,7 @@ void bybui(struct builders bui[],int count,char name[]) {
     printf("Searching for Builder: %s\n", name);
     for (int i = 0; i < count; i++) {
         if (strstr(bui[i].name, name) != NULL) {
-            printf("ID:%s\n",bui[i].id);
+            printf("ID:%d\n",bui[i].id);
             printf("Name: %s\n",bui[i].name);
             printf("Contact no.: %s\n",bui[i].cn);
             printf("Specialization: %s\n",bui[i].Spe);
@@ -598,7 +598,7 @@ void byaval(struct property details[],int count, char aval[]) {
     int found = 0;
     for(int i=0;i<count;i++) {
         if(strstr(details[i].aval,aval)!=NULL){
-            printf("Property ID: %s\n", details[i].proID);
+            printf("Property ID: %d\n", details[i].proID);
             printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
@@ -622,7 +622,7 @@ void ndpr(struct property details[],char nh[100],int mp,int count) {
     for (int i = 0; i < count; i++) {
         // Check if the property matches the specified neighborhood and price
         if (strstr(details[i].nh, nh) != NULL && details[i].price <= mp) {
-            printf("\nProperty ID: %s\n", details[i].proID);
+            printf("\nProperty ID: %d\n", details[i].proID);
             printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
@@ -647,7 +647,7 @@ void cyndpr(struct property details[],char nh[100],int mp,int count,char city[10
     for (int i = 0; i < count; i++) {
         // Check if the property matches the specified neighborhood and price
         if (strcmp(details[i].city, city) == 0 && strstr(details[i].nh, nh) != NULL && details[i].price <= mp) {
-            printf("\nProperty ID: %s\n", details[i].proID);
+            printf("\nProperty ID: %d\n", details[i].proID);
             printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
@@ -672,7 +672,7 @@ void pripr(struct property details[],struct capital pri[],int count, int mp) {
     for (int i = 0; i < count; i++) {
         // Check if the property matches the specified neighborhood and price
         if (details[i].price <=mp && pri[i].ps <= mp && pri[i].pe >= mp) {
-            printf("\nProperty ID: %s\n", details[i].proID);
+            printf("\nProperty ID: %d\n", details[i].proID);
             printf("Price: %d\n", details[i].price);
             printf("City: %s\n", details[i].city);
             printf("Neighborhood: %s\n", details[i].nh);
