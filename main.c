@@ -4,7 +4,7 @@
 
 //Property Structure
 struct property {
-    char proID[100];
+    int proID;
     int price;
     char city[100];
     char nh[100];
@@ -26,7 +26,7 @@ struct capital{
 //Builders information structure
 struct builders{
     //Builder ID
-    char id[100];
+    int id;
     //Builder name
     char name[100];
     //builder contact
@@ -52,6 +52,8 @@ struct combined {
 };
 
 struct combined con;
+
+int id;
 
 //property = pro
 void displaypro(struct property details[],int count);
@@ -81,6 +83,9 @@ void ndpr(struct property details[],char nh[100],int mp,int count);
 void cyndpr(struct property details[],char nh[100],int mp,int count,char city[100]);
 // Price to Price Range
 void pripr(struct property details[],struct capital pri[],int count, int mp);
+// Get properties details
+void buy(struct property details[],struct builders bui[],struct capital pri[],int count,int id);
+
 
 int main() {
     int pro = 0;
@@ -99,8 +104,8 @@ int main() {
 
     // Read properties data
     while (fgets(buffer, 200, file) != NULL && pro < 25) {
-        sscanf(buffer, "%[^,],%d,%[^,],%[^,],%[^,],%[^,],%[^\n,]",
-               con.details[pro].proID,
+        sscanf(buffer, "%d,%d,%[^,],%[^,],%[^,],%[^,],%[^\n,]",
+               &con.details[pro].proID,
                &con.details[pro].price,
                con.details[pro].city,
                con.details[pro].nh,
@@ -140,8 +145,8 @@ int main() {
 
     // Read builders data
     while (fgets(buffer, 200, fb) != NULL && build < 25) {
-        sscanf(buffer, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,\n]",
-               con.bui[build].id,
+        sscanf(buffer, "%d,%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,\n]",
+               &con.bui[build].id,
                con.bui[build].name,
                con.bui[build].cn,
                con.bui[build].Spe,
@@ -228,6 +233,10 @@ int main() {
                 case 1:
                     printf("Data Property\n");
                     displaypro(con.details,pro);
+
+                    printf("Which Property you want to buy:");
+                    scanf("%d",&id);
+                    buy(con.details,con.bui,con.pri,pro,id);
                     break;
                 case 2: // NH Fun
                     char nh[100];
@@ -305,9 +314,10 @@ int main() {
                     printf("Enter the Max Price in which you looking for:");
                     scanf("%d",&mp);
 
-
+                    printf("------------------------------------------------------\n");
                     printf("1. Do you want to see Properties in price range\n");
                     printf("2. Do you want to as per price range\n\n",mp);
+                    printf("------------------------------------------------------\n");
 
                     printf("Enter your Choice further:");
                     scanf("%d",&pricetopr);
@@ -343,11 +353,14 @@ int main() {
             }break;
         case 3:
 
+            printf("----------------------------------------------\n");
             printf("1. Display all Properties by Price Range\n");
             printf("2. Display all Price Range by Neighborhood\n");
+            printf("3. Display all properties as between different range\n");
             printf("3. Exit\n");
+            printf("----------------------------------------------\n");
 
-            printf("Enter your Choice(1-3):");
+            printf("Enter your Choice(1-4):");
             scanf("%d",&ndbyprice);
 
 
@@ -363,6 +376,12 @@ int main() {
                     ndprice(con.pri,cap,nhp);
                     break;
                 case 3:
+                    int mp;
+                    printf("Enter the Max Price in which you looking for:");
+                    scanf("%d",&mp);
+                    pripr(con.details,con.pri,pro,mp);
+                    break;
+                case 4:
                     printf("Thank you \n");
                     exit(0);
 
@@ -397,7 +416,7 @@ void displaybuilders(struct builders bui[],int count) {
 void displaypro(struct property details[], int count) {
     printf("Property Details:\n\n");
     for (int i = 0; i < count; i++) {
-        printf("Property ID: %s\n", details[i].proID);
+        printf("Property ID: %d\n", details[i].proID);
         printf("Price: %d\n", details[i].price);
         printf("City: %s\n", details[i].city);
         printf("Neighborhood: %s\n", details[i].nh);
@@ -676,6 +695,27 @@ void pripr(struct property details[],struct capital pri[],int count, int mp) {
     }
 }
 
-
+void buy(struct property details[],struct builders bui[],struct capital pri[],int count,int id) {
+    int found = 0;
+    printf("Searching for Builder: %s\n", bui->name);
+    for (int i = 0; i < count; i++) {
+        if (id==bui[i].id) {
+            printf("ID:%d\n",bui[i].id);
+            printf("Name: %s\n",bui[i].name);
+            printf("Contact no.: %s\n",bui[i].cn);
+            printf("Specialization: %s\n",bui[i].Spe);
+            printf("City: %s\n",bui[i].city);
+            printf("Email Id: %s\n",bui[i].eid);
+            printf("Years Of Experience: %s\n",bui[i].ye);
+            printf("Completed Projects: %s\n",bui[i].cp);
+            printf("Website: %s\n",bui[i].ws);
+            printf("----------------------------\n\n\n");
+            found = 1;
+        }
+    }
+    if (!found) {
+        printf("No builders found in %d\n",bui->id);
+    }
+}
 
 //......................
