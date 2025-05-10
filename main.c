@@ -697,7 +697,7 @@ void pripr(struct property details[],struct capital pri[],int count, int mp) {
 
 void buy(struct property details[],struct builders bui[],struct capital pri[],int count,int id) {
     int found = 0;
-    printf("Searching for Builder:");
+    printf("Searching for Builder:\n");
     for (int i = 0; i < count; i++) {
         if (id==bui[i].id) {
             printf("Builder Information of Selected Property: \n");
@@ -727,7 +727,7 @@ void buy(struct property details[],struct builders bui[],struct capital pri[],in
         }
     }
     if (!found) {
-        printf("No builders found in %d\n",bui->id);
+        printf("No Builders or Property found at id %d\n",id);
     }
 }
 
