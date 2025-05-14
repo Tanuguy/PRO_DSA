@@ -207,7 +207,6 @@ int main() {
                 case 3: {
                     printf("Thank you\n");
                     exit(0);
-                    break;
                 }
                 default: {
                     printf("Invalid Choice\n");
@@ -275,6 +274,10 @@ int main() {
                             buy(con.details,con.bui,con.pri,pro,id);
                             break;
                         }
+                        default: {
+                            printf("Wrong Choice\n");
+                            break;
+                        }
                     }
                 }
                     break;
@@ -332,13 +335,16 @@ int main() {
                                     buy(con.details,con.bui,con.pri,pro,id);
                                     break;
                                 }
+                                default: {
+                                    printf("Wrong Choice\n");
+                                    break;
+                                }
                             }
                         }
                             break;
                         case 3: {
                             printf("Thank you \n");
                             exit(0);
-                            break;
                         }
                         default: {
                             printf("Invalid Choice\n");
@@ -355,8 +361,8 @@ int main() {
 
                     printf("------------------------------------------------------\n");
                     printf("1. Do you want to see Properties in price range\n");
-                    printf("2. Do you want to as per price range\n\n",mp);
-                    printf("------------------------------------------------------\n");
+                    printf("2. Do you want to as per price range\n\n");
+                    printf("-----------------------------------------------------\n");
 
                     printf("Enter your Choice further:");
                     scanf("%d",&pricetopr);
@@ -378,6 +384,10 @@ int main() {
                             buy(con.details,con.bui,con.pri,pro,id);
                             break;
                     }
+                        default: {
+                            printf("Wrong Choice\n");
+                            break;
+                        }
                     }
                 }
                     break;
@@ -460,6 +470,10 @@ int main() {
         case 4: {
             printf("Thank you, Visit Again\n");
             exit(0);
+        }
+        default: {
+            printf("Wrong choice\n");
+            break;
         }
     }
 
