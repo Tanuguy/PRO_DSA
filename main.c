@@ -419,7 +419,6 @@ int main() {
                     // Exit
                     printf("Thank you\nYour Dream Home is waiting for you\n");
                     exit(0);
-                    break;
                 }
                 default: {
                     printf("Wrong choice\n");
@@ -465,6 +464,10 @@ int main() {
                     printf("Thank you \n");
                     exit(0);
                 }
+                default: {
+                    printf("Wrong choice\n");
+                    break;
+                };
             }
     }break;
         case 4: {
@@ -630,11 +633,10 @@ void ndprice(struct capital pri[],int count,char nhp[]){
 
 //Fun to Search in city to nh
 void cynd(struct property details[], int count, char city[], char nh[]) {
-    int found = 0;
+    const int found= 0;
     printf("Searching for properties in %s near: %s\n", city, nh);
 
     for (int i = 0; i < count; i++) {
-        int found = 0;
         // Check if the property matches the specified city and neighborhood
         if (strcmp(details[i].city, city) == 0 && strstr(details[i].nh, nh) != NULL) {
             printf("\nProperty ID: %d\n", details[i].proID);
@@ -645,12 +647,11 @@ void cynd(struct property details[], int count, char city[], char nh[]) {
             printf("Authentication Type: %s\n", details[i].at);
             printf("Availability: %s\n",details[i].aval);
             printf("------------------------------------\n\n\n");
-            found = 1;
         }
     }
 
     if (!found) {
-        printf("No more properties found in %s near: %s\n", city, nh);
+        printf("No more properties found");
     }
 }
 
