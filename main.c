@@ -538,7 +538,7 @@ void citypro(struct property details[],int count, char city[]) {
         }
     }
     if(!found) {
-        printf("City not there\n");
+        printf("City not there\n\n");
     }
 }
 
@@ -560,7 +560,7 @@ void bynd(struct property details[], int count, char nh[]) {
         }
     }
     if (!found) {
-        printf("No properties found near: %s\n", nh);
+        printf("No properties found near: %s\n\n", nh);
     }
 }
 
@@ -582,7 +582,7 @@ void byprice(struct property details[],int count,int mp){
         }
     }
     if (!found) {
-        printf("No Properties found under %d:\n",mp);
+        printf("No Properties found under %d:\n\n",mp);
     }
 }
 
@@ -604,7 +604,7 @@ void bytd(struct property details[],int count,char tpd[]) {
         }
     }
     if (!found) {
-        printf("No properties found near: %s\n",tpd);
+        printf("No properties found near: %s\n\n",tpd);
     }
 }
 
@@ -633,7 +633,7 @@ void ndprice(struct capital pri[],int count,char nhp[]){
         }
     }
     if (!found) {
-        printf("No neighborhood found near: %s\n", nhp);
+        printf("No neighborhood found near: %s\n\n", nhp);
     }
 }
 
@@ -657,7 +657,7 @@ void cynd(struct property details[], int count, char city[], char nh[]) {
     }
 
     if (!found) {
-        printf("No more properties found");
+        printf("No more properties found\n\n");
     }
 }
 
@@ -681,7 +681,7 @@ void bybui(struct builders bui[],int count,char name[]) {
         }
     }
     if (!found) {
-        printf("No Builder found : %s\n",name);
+        printf("No Builder found : %s\n\n",name);
     }
 }
 
@@ -702,7 +702,7 @@ void byaval(struct property details[],int count, char aval[]) {
         }
     }
     if(!found) {
-        printf("Property input not valid\n");
+        printf("Property input not valid\n\n");
     }
 }
 
@@ -727,7 +727,7 @@ void ndpr(struct property details[],char nh[100],int mp,int count) {
     }
 
     if (!found) {
-        printf("No more properties found in %s under: %d\n", nh, mp);
+        printf("No more properties found in %s under: %d\n\n", nh, mp);
     }
 }
 
@@ -752,7 +752,7 @@ void cyndpr(struct property details[],char nh[100],int mp,int count,char city[10
     }
 
     if (!found) {
-        printf("No more properties found in %s under: %d\n", nh, mp);
+        printf("No more properties found in %s under: %d\n\n", nh, mp);
     }
 }
 
@@ -783,7 +783,7 @@ void pripr(struct property details[],struct capital pri[],int count, int mp) {
     }
 
     if (!found) {
-        printf("No more properties found in %d\n",mp);
+        printf("No more properties found in %d\n\n",mp);
     }
 }
 
@@ -819,7 +819,7 @@ void buy(struct property details[],struct builders bui[],struct capital pri[],in
         }
     }
     if (!found) {
-        printf("No Builders or Property found at id %d\n",id);
+        printf("No Builders or Property found at id %d\n\n",id);
     }
 }
 
