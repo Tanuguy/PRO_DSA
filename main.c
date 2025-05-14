@@ -93,6 +93,8 @@ int main() {
     int build = 0;
 
     // Open the property file
+    /* Change the full file loaction were you saved the file and then enter PRList.csv and
+     change \ bracket to / this if you copy location   */
     FILE *file = fopen("C:/DSA Pro/PRList.csv", "r");
     if (file == NULL) {
         printf("Error opening properties file for reading!\n");
@@ -117,6 +119,8 @@ int main() {
     fclose(file);
 
     // Open the capital file
+    /* Change the full file loaction were you saved the file and then enter PRList.csv and
+    change \ bracket to / this if you copy location   */
     FILE *fr = fopen("C:/DSA Pro/PRange.csv", "r");
     if (fr == NULL) {
         printf("Error opening capital file for reading!\n");
@@ -136,6 +140,8 @@ int main() {
     fclose(fr);
 
     // Open the builder file
+    /* Change the full file loaction were you saved the file and then enter PRList.csv and
+        change \ bracket to / this if you copy location   */
     FILE *fb = fopen("C:/DSA Pro/PRbuild.csv", "r");
     if (fb == NULL) {
         printf("Error opening builders file for reading!\n");
