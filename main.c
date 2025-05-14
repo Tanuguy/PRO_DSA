@@ -180,7 +180,7 @@ int main() {
     scanf("%d",&upperchoice);
 
     switch(upperchoice) {
-        case 1:
+        case 1:{
             printf("-----------------------------------------\n");
             printf("1. Do you want to See all Builder Details\n");
             printf("2. Do You want see Specific Builders Details\n");
@@ -192,28 +192,31 @@ int main() {
             scanf("%d",&buichoice);
 
             switch (buichoice) {
-                case 1:
+                case 1: {
                     printf("Builders Information\n\n");
                     displaybuilders(con.bui,build);
                     break;
-                case 2:
+                }
+                case 2: {
                     char name[100];
                     printf("Enter the Builders you are looking for in UK:");
                     scanf("%s",name);
                     bybui(con.bui,build,name);
                     break;
-
-                case 3:
+                }
+                case 3: {
                     printf("Thank you\n");
                     exit(0);
                     break;
-                default:
+                }
+                default: {
                     printf("Invalid Choice\n");
                     break;
-            }break;
+                }
+            }
+        }break;
 
-        case 2:
-
+        case 2: {
             printf("What would you like to do?\n");
             printf("---------------------------------------\n");
             printf("1. Display all Properties\n");
@@ -230,7 +233,7 @@ int main() {
 
             //Switich Statement
             switch(choice) {
-                case 1:
+                case 1:{
                     printf("Data Property\n");
                     displaypro(con.details,pro);
 
@@ -238,7 +241,9 @@ int main() {
                     scanf("%d",&id);
                     buy(con.details,con.bui,con.pri,pro,id);
                     break;
-                case 2: // NH Fun
+            }
+                case 2: {
+                    // NH Fun
                     char nh[100];
                     printf("Enter the neighborhood you are looking for in UK:");
                     scanf("%s",nh);
@@ -250,13 +255,16 @@ int main() {
                     scanf("%d",&ndtoprice);
 
                     switch (ndtoprice) {
-                        case 1: // All NH in UK
-                         bynd(con.details,pro,nh);
+                        case 1: {
+                            // All NH in UK
+                            bynd(con.details,pro,nh);
                             printf("Which Property you want to buy from the given details(Enter ID):");
                             scanf("%d",&id);
                             buy(con.details,con.bui,con.pri,pro,id);
                             break;
-                        case 2: // NH to Price
+                        }
+                        case 2: {
+                            // NH to Price
                             int mp;
                             printf("Enter the Max Price in which you looking for:");
                             scanf("%d",&mp);
@@ -266,9 +274,13 @@ int main() {
                             scanf("%d",&id);
                             buy(con.details,con.bui,con.pri,pro,id);
                             break;
+                        }
                     }
+                }
                     break;
-                case 3:// City Fun Case study
+
+                case 3: {
+                    // City Fun Case study
                     char city[100];
                     printf("Enter the City you are looking for:");
                     scanf("%s",city);
@@ -288,7 +300,8 @@ int main() {
                             scanf("%d",&id);
                             buy(con.details,con.bui,con.pri,pro,id);
                             break;
-                        case 2: // NH of Base of City
+                        case 2: {
+                            // NH of Base of City
                             char nh[100];
                             printf("Enter want neighborhood you looking for in %s:",city);
                             scanf("%s",nh);
@@ -300,13 +313,16 @@ int main() {
                             scanf("%d",&ndbyprice);
 
                             switch (ndbyprice) {
-                                case 1: // city to nh inside
+                                case 1: {
+                                    // city to nh inside
                                     cynd(con.details,pro,city,nh);
                                     printf("Which Property you want to buy from the given details(Enter ID):");
                                     scanf("%d",&id);
                                     buy(con.details,con.bui,con.pri,pro,id);
                                     break;
-                                case 2: // city to nh to price
+                                }
+                                case 2: {
+                                    // city to nh to price
                                     int mp;
                                     printf("Enter the Max Price in which you looking for:");
                                     scanf("%d",&mp);
@@ -315,18 +331,24 @@ int main() {
                                     scanf("%d",&id);
                                     buy(con.details,con.bui,con.pri,pro,id);
                                     break;
+                                }
                             }
+                        }
                             break;
-                        case 3:
+                        case 3: {
                             printf("Thank you \n");
                             exit(0);
                             break;
-                        default:
+                        }
+                        default: {
                             printf("Invalid Choice\n");
                             break;
-                    }break;
+                        }
+                    }
+                }break;
 
-                case 4: //Price Fun
+                case 4: {
+                    //Price Fun
                     int mp;
                     printf("Enter the Max Price in which you looking for:");
                     scanf("%d",&mp);
@@ -340,22 +362,27 @@ int main() {
                     scanf("%d",&pricetopr);
 
                     switch (pricetopr) {
-                        case 1: // All Price details
+                        case 1: {
+                            // All Price details
                             byprice(con.details,pro,mp);
 
                             printf("Which Property you want to buy from the given details(Enter ID):");
                             scanf("%d",&id);
                             buy(con.details,con.bui,con.pri,pro,id);
                             break;
-                        case 2:
+                        }
+                        case 2:{
                             pripr(con.details,con.pri,pro,mp);
                             printf("Which Property you want to buy from the given details(Enter ID):");
                             scanf("%d",&id);
                             buy(con.details,con.bui,con.pri,pro,id);
                             break;
                     }
+                    }
+                }
                     break;
-                case 5: // Price scope fun
+                case 5: {
+                    // Price scope fun
                     char tpd[100];
                     printf("Enter the Price Scope you are looking for:");
                     scanf("%s",tpd);
@@ -365,7 +392,9 @@ int main() {
                     scanf("%d",&id);
                     buy(con.details,con.bui,con.pri,pro,id);
                     break;
-                case 6: // Aval check Fun
+                }
+                case 6: {
+                    // Aval check Fun
                     char aval[100];
                     printf("Enter the availability of Property you are looking for:");
                     scanf("%s",aval);
@@ -375,15 +404,21 @@ int main() {
                     scanf("%d",&id);
                     buy(con.details,con.bui,con.pri,pro,id);
                     break;
-                case 7: // Exit
+                }
+                case 7: {
+                    // Exit
                     printf("Thank you\nYour Dream Home is waiting for you\n");
                     exit(0);
                     break;
-                default:
+                }
+                default: {
                     printf("Wrong choice\n");
                     break;
-            }break;
-        case 3:
+                }
+            }
+        }break;
+
+        case 3:{
 
             printf("----------------------------------------------\n");
             printf("1. Display all Properties by Price Range\n");
@@ -397,31 +432,35 @@ int main() {
 
 
             switch (ndbyprice) {
-                case 1:
+                case 1: {
                     printf("Price Range: \n");
                     displayprice(con.pri,cap);
                     break;
-                case 2:
+                }
+                case 2: {
                     char nhp[100];
                     printf("Enter the neighborhood Price Range you are looking for:");
                     scanf("%s",nhp);
                     ndprice(con.pri,cap,nhp);
                     break;
-                case 3:
+                }
+                case 3: {
                     int mp;
                     printf("Enter the Max Price in which you looking for:");
                     scanf("%d",&mp);
                     pripr(con.details,con.pri,pro,mp);
                     break;
-                case 4:
+                }
+                case 4: {
                     printf("Thank you \n");
                     exit(0);
-
-            }break;
-        case 4:
+                }
+            }
+    }break;
+        case 4: {
             printf("Thank you, Visit Again\n");
             exit(0);
-            break;
+        }
     }
 
 return 0;
