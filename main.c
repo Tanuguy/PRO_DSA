@@ -523,7 +523,7 @@ void displaypro(struct property details[], int count) {
         printf("Total Properties: %s\n", details[i].tpd);
         printf("AT: %s\n", details[i].at);
         printf("Availability: %s\n",details[i].aval);
-        printf("---------------------------\n");
+        printf("---------------------------\n\n\n");
     }
 }
 
