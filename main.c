@@ -539,7 +539,7 @@ void citypro(struct property details[],int count, char city[]) {
             printf("Neighborhood: %s\n", details[i].nh);
             printf("Total Properties: %s\n", details[i].tpd);
             printf("AT: %s\n", details[i].at);
-            printf("---------------------------\n");
+            printf("---------------------------\n\n\n");
             found = 1;
         }
     }
