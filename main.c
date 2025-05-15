@@ -242,7 +242,7 @@ int main() {
                     printf("Data Property\n\n");
                     displaypro(con.details,pro);
 
-                    printf("(Enter 0 for exit)\n Which Property you want to buy from the given details(Enter ID): ");
+                    printf("Which Property you want to buy from the given details(Enter ID): ");
                     scanf("%d",&id);
                     buy(con.details,con.bui,con.pri,pro,id);
                     break;
@@ -825,7 +825,7 @@ void buy(struct property details[],struct builders bui[],struct capital pri[],in
         }
     }
     if (!found) {
-        printf("No Builders or Property found at id %d\n\n",id);
+        printf("No Builders or Property found at ID: %d\n\n",id);
     }
 }
 
