@@ -445,7 +445,7 @@ int main() {
             printf("1. Display all Properties by Price Range\n");
             printf("2. Display all Price Range by Neighborhood\n");
             printf("3. Display all properties as between different range\n");
-            printf("3. Exit\n");
+            printf("4. Exit\n");
             printf("----------------------------------------------\n\n");
 
             printf("Enter your Choice(1-4):");
