@@ -97,7 +97,7 @@ int main() {
      change \ bracket to / this if you copy location   */
     FILE *file = fopen("C:/DSA Pro/PRList.csv", "r");
     if (file == NULL) {
-        printf("Error opening properties file for reading!\n");
+        printf("Error opening properties list file for reading!\n");
         return 1;
     }
 
@@ -123,7 +123,7 @@ int main() {
     change \ bracket to / this if you copy location   */
     FILE *fr = fopen("C:/DSA Pro/PRange.csv", "r");
     if (fr == NULL) {
-        printf("Error opening capital file for reading!\n");
+        printf("Error opening Price range file for reading!\n");
         return 1;
     }
     fgets(buffer, 200, fr); // Skip the header line
@@ -176,9 +176,9 @@ int main() {
     int pricetopr; // price to price range
 
     printf("--------------------------------------------------\n");
-    printf("1. Do you want to go in Builders\n");
-    printf("2. Do you want to go in Properties\n");
-    printf("3. Do you want to go in Price Range \n");
+    printf("1. Are you interested in Builders section?\n");
+    printf("2. Are you interested in Properties section?\n");
+    printf("3. Are you interested in Price Range Section?\n");
     printf("4. Exit\n");
     printf("---------------------------------------------------\n\n");
 
@@ -188,8 +188,8 @@ int main() {
     switch(upperchoice) {
         case 1:{
             printf("-----------------------------------------\n");
-            printf("1. Do you want to See all Builder Details\n");
-            printf("2. Do You want see Specific Builders Details\n");
+            printf("1. Would you like to view all builder details?\n");
+            printf("2. Are you interested in specific details about a builder?\n");
             printf("3. Exit\n");
             printf("-------------------------------------------\n\n");
 
@@ -205,7 +205,7 @@ int main() {
                 }
                 case 2: {
                     char name[100];
-                    printf("Enter the Builders you are looking for in UK:");
+                    printf("Provide the builder name you’re looking for in the UK:");
                     scanf("%s",name);
                     bybui(con.bui,build,name);
                     break;
@@ -224,11 +224,11 @@ int main() {
         case 2: {
             printf("What would you like to do?\n\n");
             printf("---------------------------------------\n");
-            printf("1. Display all Properties\n");
-            printf("2. Search Property By Neighborhood\n");
-            printf("3. Search Property By City\n");
-            printf("4. Search Property By Price\n");
-            printf("5. Search Property By Price Scope\n");
+            printf("1. Would you like to view all Properties\n");
+            printf("2. Search by your desired neighborhood.\n");
+            printf("3. Search by your desired city.\n");
+            printf("4. Search by your Budget.\n");
+            printf("5. Search Property by Price Scope\n");
             printf("6. Check Availability of properties\n");
             printf("7. Exit\n");
             printf("-------------------------------------------\n\n");
@@ -255,8 +255,8 @@ int main() {
 
 
                     printf("-----------------------------------------------------\n\n");
-                    printf("1. Do you want to see all properties in %s\n",nh);
-                    printf("2. Do you want to as per price in %s\n\n",nh);
+                    printf("1. Would you like to view all properties in %s\n",nh);
+                    printf("2. Would you like to view as per price in %s\n\n",nh);
                     printf("-----------------------------------------------------\n\n");
                     printf("Enter your choice: ");
                     scanf("%d",&ndtoprice);
@@ -293,12 +293,12 @@ int main() {
                 case 3: {
                     // City Fun Case study
                     char city[100];
-                    printf("Enter the City you are looking for:");
+                    printf("Enter the City you are looking in:");
                     scanf("%s",city);
 
                     printf("-----------------------------------------------------\n\n");
-                    printf("1. Do you want to See all properties in %s\n",city);
-                    printf("2. Do you want to see specific Properties in %s\n",city);
+                    printf("1. Would you like to view all properties in %s\n",city);
+                    printf("2. Would you like to view specific Properties in %s\n",city);
                     printf("3. Exit\n\n");
                     printf("-----------------------------------------------------\n\n");
 
@@ -316,12 +316,12 @@ int main() {
                         case 2: {
                             // NH of Base of City
                             char nh[100];
-                            printf("Enter want neighborhood you looking for in %s:",city);
+                            printf("Enter the neighborhood you are looking for in %s:",city);
                             scanf("%s",nh);
 
                             printf("-----------------------------------------------------\n\n");
-                            printf("1. Do you want to see all properties in %s\n",nh);
-                            printf("2. Do you want to as per price in %s\n\n",nh);
+                            printf("1. Would you like to view all properties in %s\n",nh);
+                            printf("2. Would you like to view as per price in %s\n\n",nh);
                             printf("-----------------------------------------------------\n\n");
 
                             printf("Enter your Choice further:");
@@ -372,8 +372,8 @@ int main() {
                     scanf("%d",&mp);
 
                     printf("------------------------------------------------------\n");
-                    printf("1. Do you want to see Properties in price range\n");
-                    printf("2. Do you want to as per price range\n\n");
+                    printf("1. Would you like to view all properties within this price range?\n");
+                    printf("2. Would you like to view as per price range\n\n");
                     printf("-----------------------------------------------------\n");
 
                     printf("Enter your Choice further:");
@@ -442,9 +442,9 @@ int main() {
         case 3:{
 
             printf("----------------------------------------------\n");
-            printf("1. Display all Properties by Price Range\n");
-            printf("2. Display all Price Range by Neighborhood\n");
-            printf("3. Display all properties as between different range\n");
+            printf("1. Would you like to view all Properties by Price Range\n");
+            printf("2. Would you like to view all Price Range by Neighborhood\n");
+            printf("3. Would you like to view all properties within Price range\n");
             printf("4. Exit\n");
             printf("----------------------------------------------\n\n");
 
@@ -715,7 +715,7 @@ void byaval(struct property details[],int count, char aval[]) {
 //Fun to Search in nh to price
 void ndpr(struct property details[],char nh[100],int mp,int count) {
     int found = 0;
-    printf("Searching for properties in %s in: %d\n", nh, mp);
+    printf("Searching for properties near %s around %d\n", nh, mp);
 
     for (int i = 0; i < count; i++) {
         // Check if the property matches the specified neighborhood and price
@@ -740,7 +740,7 @@ void ndpr(struct property details[],char nh[100],int mp,int count) {
 //Fun to Search in city to nh to price
 void cyndpr(struct property details[],char nh[100],int mp,int count,char city[100]) {
     int found = 0;
-    printf("Searching for properties in %s in: %d\n", nh, mp);
+    printf("Searching for properties near %s in: %d\n", nh, mp);
 
     for (int i = 0; i < count; i++) {
         // Check if the property matches the specified neighborhood and price
