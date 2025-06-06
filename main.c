@@ -740,7 +740,7 @@ void ndpr(struct property details[],char nh[100],int mp,int count) {
 //Fun to Search in city to nh to price
 void cyndpr(struct property details[],char nh[100],int mp,int count,char city[100]) {
     int found = 0;
-    printf("Searching for properties near %s in: %d\n", nh, mp);
+    printf("Searching for properties near %s around: %d\n", nh, mp);
 
     for (int i = 0; i < count; i++) {
         // Check if the property matches the specified neighborhood and price
