@@ -228,7 +228,7 @@ int main() {
             printf("2. Search by your desired neighborhood.\n");
             printf("3. Search by your desired city.\n");
             printf("4. Search by your Budget.\n");
-            printf("5. Search Property by Price Scope\n");
+            printf("5. Search by your Price Scope\n");
             printf("6. Check Availability of properties\n");
             printf("7. Exit\n");
             printf("-------------------------------------------\n\n");
